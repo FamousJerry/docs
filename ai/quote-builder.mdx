@@ -1,0 +1,124 @@
+---
+title: "AI Quote Builder"
+description: "Describe a rental in plain English or Thai; AI matches your inventory and suggests line items."
+icon: "wand-magic-sparkles"
+---
+
+The AI Quote Builder turns a plain-language description of a job into a structured quote with line items, quantities, and rates. It's faster than scrolling through inventory for someone who already knows what they need.
+
+## When to use it
+
+Best for:
+
+- Repeat customers asking for "the usual" but slightly different
+- Internal sales staff who know what's needed but not the exact line item names
+- New staff who haven't memorized your inventory yet
+
+Not as useful for:
+
+- Highly specific quotes where you know exactly which units to assign
+- Custom configurations that don't match your standard inventory
+
+## How to use it
+
+<Steps>
+  <Step title="Open the new quote form">
+    From the Quotes list, click **New Quote**.
+  </Step>
+  <Step title="Click 'AI Assist'">
+    Top right of the form, next to **Save Draft**.
+  </Step>
+  <Step title="Describe the job">
+    Type a description in English or Thai. Be specific about dates, equipment, and crew size if relevant.
+  </Step>
+  <Step title="Submit">
+    Claude matches your description against your inventory and proposes line items.
+  </Step>
+  <Step title="Review and edit">
+    Each suggestion shows item name, quantity, duration, rate. Adjust before saving.
+  </Step>
+</Steps>
+
+## Example prompts
+
+### English
+
+> "3-day shoot in Phuket starting Friday. 4 cameras, 2 lighting kits, 1 audio package, full crew gear."
+
+JingjaiOps suggests:
+
+```
+Sony FX6 × 4              3 days    ฿7,500/day  = ฿90,000
+Lighting Kit Pro × 2      3 days    ฿4,500/day  = ฿27,000
+Audio Recording Kit × 1   3 days    ฿3,200/day  = ฿9,600
+Camera Cart × 1           3 days    ฿800/day    = ฿2,400
+V-Mount Battery × 12      3 days    ฿250/day    = ฿9,000
+```
+
+### Thai
+
+> "ถ่ายงาน 3 วัน เริ่มศุกร์ที่ภูเก็ต กล้อง 4 ตัว ไฟ 2 ชุด เสียง 1 ชุด"
+
+The AI handles Thai descriptions natively and matches against the Thai names of your inventory items (if you've set them).
+
+### Mixed language
+
+> "1-week rental for a corporate event, 1 ATEM mini, 3 cameras with prime lenses 35mm และ 50mm, livestreaming kit"
+
+Mixed English and Thai works fine. Claude understands code-switching.
+
+## How matching works
+
+When you submit a description, JingjaiOps:
+
+1. Parses the dates, equipment, and quantities from your text.
+2. Searches your inventory for items that match the descriptions semantically (not just by exact name).
+3. Picks the most appropriate match for each requirement.
+4. Calculates duration in your default rental unit (days, weeks, months).
+5. Returns a draft list of line items with explanations.
+
+The AI is conservative — if your description is ambiguous or doesn't match anything in inventory, it asks a clarifying question rather than guessing.
+
+For example:
+
+> "I need a tripod"
+
+The AI might respond:
+
+> "I see three tripod options in your inventory: Sachtler FSB 8 (CAM-Tripod-A, ฿800/day), Manfrotto 504 (CAM-Tripod-B, ฿500/day), and Manfrotto 502 (CAM-Tripod-C, ฿400/day). Which one do you want, or should I propose all three as options?"
+
+## Editing AI suggestions
+
+The AI suggestions are a starting point, not a final answer. You can:
+
+- **Edit any line** — change quantity, duration, rate, or replace with a different inventory item
+- **Add lines** — add manual line items for delivery, setup labor, etc.
+- **Remove lines** — delete a suggestion that doesn't fit
+- **Add the deposit** — toggle on Security Deposit Required and enter the amount
+- **Add notes** — internal or customer-facing notes
+
+Once you're happy, click **Save Draft** or **Send to Client** as usual.
+
+## What the AI doesn't do
+
+- **Doesn't pick specific Asset IDs.** That happens at Pick & Scan time, when the crew scans physical units.
+- **Doesn't override your business rules.** It uses your real inventory, real rates, and real categories. If you don't own an item, the AI can't conjure it.
+- **Doesn't auto-send.** It always lands you in the quote draft for review.
+- **Doesn't change history.** Past quotes are not affected by AI suggestions.
+
+## Improving AI accuracy
+
+The AI works best when:
+
+- Your inventory items have **good names** — clear and descriptive in English and Thai
+- Your **categories are accurate** — the AI uses categories to reason about what fits a description
+- You **set Thai names** — so Thai descriptions match Thai names directly
+
+If you find the AI consistently mis-matching a particular item, edit the inventory item's name to be more specific.
+
+## Tips
+
+- **Be specific about dates.** "Friday 14 March to Sunday 16 March" beats "this weekend".
+- **Use quantity numbers explicitly.** "4 cameras" beats "a few cameras".
+- **Include the location** if it affects logistics. "On location in Phuket" prompts the AI to suggest delivery line items.
+- **Trust but verify.** Always review every line before saving.

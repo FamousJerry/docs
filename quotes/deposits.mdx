@@ -1,0 +1,84 @@
+---
+title: "Deposits on a Quote"
+description: "Adding a security deposit to a quote, how it appears on the PDF, and the deposit request document."
+icon: "vault"
+---
+
+A security deposit on a quote is a refundable amount the customer pays before equipment goes out. It sits separately from the rental charges, is not subject to VAT, and is returned at the end of the job if no damage occurred.
+
+## Adding a deposit to a quote
+
+<Steps>
+  <Step title="Open the quote">
+    From the new-quote form or the edit view of an existing draft.
+  </Step>
+  <Step title="Toggle 'Security Deposit Required'">
+    Find the **Deposit** section below the line items.
+  </Step>
+  <Step title="Enter the deposit amount">
+    Use a flat THB amount. (Some businesses use 10–25% of the equipment value as a rule of thumb.)
+  </Step>
+  <Step title="Save or send">
+    The deposit appears on the quote PDF and in the portal acceptance flow.
+  </Step>
+</Steps>
+
+## How the deposit appears on the quote PDF
+
+The deposit appears in its own section, separate from the rental subtotal. The block on the PDF looks like this:
+
+| Description | Amount |
+| --- | --- |
+| Subtotal (rental) | ฿100,000 |
+| VAT 7% | ฿7,000 |
+| **Grand Total (rental)** | **฿107,000** |
+| Security Deposit (refundable) | ฿20,000 |
+| **Total Due** | **฿127,000** |
+
+The deposit line is clearly labeled as **refundable** and is **not** included in the VAT calculation.
+
+## Why deposits are VAT excluded
+
+A security deposit is not consideration for goods or services — it's collateral. Under Thai VAT rules (Revenue Code Section 79), VAT is calculated on the value of goods or services supplied. Since a deposit is held against potential damage and refunded if no damage occurs, it is not a supply and not subject to VAT.
+
+JingjaiOps automatically excludes the deposit from the VAT base. If a deposit is later forfeited (kept due to damage), that forfeit is treated as a separate VATable transaction and you'll be prompted to issue a tax invoice for the forfeit amount.
+
+## Deposit request document
+
+When you save a quote with a deposit, JingjaiOps automatically generates a **Deposit Request** document. This is a separate PDF that:
+
+- States the deposit amount due
+- Lists the related quote number
+- Includes a PromptPay QR code for direct payment
+- Provides a clear refund policy statement (refunded within X days of job closure with no damage)
+
+You can find the Deposit Request:
+
+- On the quote detail screen → **Documents** tab
+- In the customer portal under the quote view
+- Attached to the email when sending the quote
+
+## When the deposit is collected
+
+The deposit is collected at acceptance time, not before. The flow:
+
+<Steps>
+  <Step title="Customer accepts and signs the quote">
+    Through the portal.
+  </Step>
+  <Step title="Deposit page appears">
+    Right after the signature, the portal shows a deposit page with a PromptPay QR.
+  </Step>
+  <Step title="Customer pays the deposit">
+    They scan the QR with their banking app. Payment confirmation is captured manually by your team via [Deposit Collect](/deposits/collect).
+  </Step>
+  <Step title="Quote moves forward">
+    The quote stays at **Accepted**. The job can be created. The deposit shows as **Pending** until you confirm receipt.
+  </Step>
+</Steps>
+
+In the **Deposits** module you'll see this deposit listed with a unique number (`DEP-YYYY-NNNN`) and its current status. Read more in [Deposits Overview](/deposits/overview).
+
+<Tip>
+  Many customers prefer to pay the deposit and the rental balance together. The portal supports a single combined payment — JingjaiOps splits it back into the deposit (VAT-excluded) and the rental (VAT-included) automatically based on what's owed.
+</Tip>

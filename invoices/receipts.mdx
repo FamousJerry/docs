@@ -1,0 +1,98 @@
+---
+title: "Receipts"
+description: "Receipt types, numbering, sending, and downloading."
+icon: "receipt"
+---
+
+A receipt is a record that money has been received. JingjaiOps generates a receipt automatically every time you record a payment, a deposit, or a deposit return.
+
+## Receipt types
+
+| Type | Prefix | When generated |
+| --- | --- | --- |
+| **Regular Receipt** | `RC-YYYY-NNNN` | Recording a payment on a regular invoice |
+| **Pre-payment Receipt** | `PREREC-YYYY-NNNN` | Recording a payment before the job starts |
+| **Deposit Receipt** | `DEPR-YYYY-NNNN` | Collecting a security deposit |
+| **Deposit Return Receipt** | `DEPRR-YYYY-NNNN` | Returning a security deposit to the customer |
+
+Each type has its own numbering sequence, so accounting can keep them separate. The prefixes are configurable in **Settings → Business Settings**.
+
+## Receipt numbering
+
+All sequences are per year, zero-padded to 4 digits, and reset on January 1.
+
+For example:
+
+- The first regular receipt of 2026 is `RC-2026-0001`.
+- The first deposit receipt of 2026 is `DEPR-2026-0001`.
+- The 200th regular receipt of 2026 is `RC-2026-0200`.
+
+The number is assigned the moment the receipt is generated and never changes.
+
+## What's on a receipt
+
+Every receipt PDF includes:
+
+- Receipt number and date (Buddhist calendar for Thai-language receipts)
+- Receipt type clearly labeled (Regular, Pre-payment, Deposit, etc.)
+- Your business name, address, and Tax ID
+- Customer name, address, and Tax ID (if registered)
+- Amount received (in numbers and Thai words for Thai receipts)
+- Payment method and reference (bank slip number, transaction ID)
+- Reference document (the invoice, deposit, or pre-payment number)
+- A "received by" signature line
+
+For Thai receipts, the receipt is bilingual with Thai labels first.
+
+## Sending receipts
+
+Receipts can be sent to clients directly:
+
+<Steps>
+  <Step title="Open the receipt">
+    From the invoice's Documents tab, the deposit's Documents tab, or the customer's portal.
+  </Step>
+  <Step title="Click 'Send to Client'">
+    Email composer opens with the receipt attached.
+  </Step>
+  <Step title="Send">
+    The customer receives the receipt PDF via email.
+  </Step>
+</Steps>
+
+Receipts also appear in the customer's portal automatically — you don't have to send them. Most customers download from the portal as needed.
+
+## Downloading receipts
+
+| Place | Action |
+| --- | --- |
+| Invoice → Documents tab | Click receipt row → Download |
+| Deposit → Documents tab | Click receipt row → Download |
+| Customer portal → Receipts tab | Download by tapping any receipt |
+| Reports → Receipts | Sortable list of all receipts; bulk export to PDF or CSV |
+
+For tax filings, the **Reports → Receipts** export gives you a CSV with every receipt issued in the period — number, date, customer, amount, method, reference. This is the file your accountant typically wants.
+
+## Voiding a receipt
+
+A receipt can be voided if the underlying payment is reversed:
+
+<Steps>
+  <Step title="Open the receipt">
+    From the invoice or deposit it relates to.
+  </Step>
+  <Step title="Click 'Void'">
+    A reason is required (e.g., "Customer payment reversed by bank").
+  </Step>
+  <Step title="Confirm">
+    The receipt is marked Voided. A void note appears at the top of the PDF.
+  </Step>
+</Steps>
+
+Voided receipts are kept in the system — they don't disappear. They show up with a "VOID" stamp on the PDF and are excluded from totals in reports.
+
+## Reissuing a receipt
+
+If a customer says they didn't get the receipt or lost it, just download from the customer portal or click **Resend** on the receipt detail. The PDF and the number stay the same — there is no "second receipt" for the same payment.
+
+If the customer's name or Tax ID was wrong on the original receipt, void the receipt with reason "incorrect customer details" and reissue with the corrected information. This generates a new receipt number, but Thai accounting practice expects you to retain the voided one with the reason annotated.

@@ -1,0 +1,105 @@
+---
+title: "Return & Inspect"
+description: "Scanning items back in, marking condition, recording damage, and triggering damage alerts."
+icon: "magnifying-glass"
+---
+
+Return & Inspect is where every piece of equipment is scanned back in and marked **Good**, **Damaged**, or **Missing**. The condition you record here drives damage alerts, deposit returns, and the AI job report.
+
+## Opening Return & Inspect
+
+The Return & Inspect tab opens automatically when a job moves to **Returning** stage. It looks similar to Pick & Scan but inverted:
+
+- **Items Out** (left) — every asset still expected back
+- **Returned** (right) — items already scanned in, with their condition
+
+## Scanning items back in
+
+<Steps>
+  <Step title="Click into the scan field">
+    Top of the Return & Inspect tab. Auto-focused when you open the tab.
+  </Step>
+  <Step title="Scan a barcode">
+    Asset moves to Returned with a default condition of **Good**.
+  </Step>
+  <Step title="Mark condition if not Good">
+    Click the asset card and switch to **Damaged** or **Missing** (more on this below).
+  </Step>
+  <Step title="Repeat for every item">
+    Continue until every asset is accounted for. Items still in the **Items Out** column at the end are automatically flagged **Missing**.
+  </Step>
+</Steps>
+
+## Marking condition
+
+Each returned asset has a condition selector with three states:
+
+| Condition | When to use | Effect |
+| --- | --- | --- |
+| **Good** | Item is in the same condition it left | No alert, no deposit deduction |
+| **Damaged** | Visible damage, broken parts, missing accessories | Triggers a damage alert; you decide deposit deduction |
+| **Missing** | Asset never came back | Triggers a missing alert; deposit forfeit prompt |
+
+When you mark **Damaged** or **Missing**, a notes field appears for you to describe the issue. Photos can also be attached.
+
+## Kit items individual condition marking
+
+For kits, each component is condition-marked individually. This matters because a kit might come back with the camera body fine but the lens cracked.
+
+In the Return & Inspect view, kits expand to their components:
+
+```
+Camera Kit A (returned)
+  ├── Sony FX6 — Good
+  ├── 24-70mm Lens — Damaged (cracked filter)
+  ├── V-Mount Battery × 2 — Good, Good
+  ├── Battery Charger — Good
+  └── Hard Case — Good
+```
+
+The kit overall shows as **Partially damaged** and the AI job report flags the specific component.
+
+## Damage alerts
+
+When you mark any item **Damaged** or **Missing**, JingjaiOps fires a damage alert. The alert sends an email to every recipient configured in **Settings → Notifications**.
+
+The email includes:
+
+- Job number and customer name
+- Asset ID and item name
+- Condition (Damaged or Missing)
+- Notes you typed
+- Photos (if attached)
+- A link back to the job in JingjaiOps
+
+This is how operations leads, accounting, or insurance contacts get pulled in immediately. They don't have to be staring at the app to know something happened.
+
+Configure recipients and which conditions trigger alerts in [Notifications Settings](/settings/notifications).
+
+## Closing the inspection
+
+When every item is accounted for (returned or marked missing), click **Complete Inspection** at the top right.
+
+This:
+
+1. Locks the condition list
+2. Generates an [AI Job Report](/jobs/ai-report) summarizing the job
+3. Prompts you to handle deposits (refund in full, partial deduction, or forfeit)
+4. Prompts you to issue the final invoice
+
+## Deposit handling at inspection
+
+After completing inspection, you'll see a deposit panel:
+
+- If everything was Good: **Refund Deposit in Full** is the default action.
+- If anything was Damaged or Missing: you can deduct a specific amount and refund the remainder, or hold the deposit pending an estimate.
+
+Read [Deposit Return](/deposits/return) for the full deposit flow.
+
+## Closing the job
+
+Once inspection is complete, deposit handling is decided, and the final invoice has been issued, click **Close Job**. The job moves to **Closed** and is read-only afterwards (an admin can still annotate notes and documents).
+
+<Tip>
+  If you discover damage after closing the job — for example, when the next renter inspects the same kit — you can re-open the job for 14 days and add damage records. After 14 days, the job is permanently closed and you'd handle the new damage as a separate matter.
+</Tip>

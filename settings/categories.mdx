@@ -1,0 +1,159 @@
+---
+title: "Categories Settings"
+description: "Managing inventory categories — adding, editing, reordering, deactivating, and Thai names."
+icon: "tags"
+---
+
+Categories settings is where you define how your inventory is organized. Read [Inventory Categories](/inventory/categories) for an overview of what categories do across the app — this page focuses on management.
+
+## Opening categories settings
+
+**Settings → Categories** in the sidebar. Admin or Super Admin role required.
+
+The settings screen shows a list of all categories with:
+
+- English name
+- Thai name
+- Asset ID prefix
+- Active or Deactivated state
+- Item count (how many items use this category)
+- Drag handle on the left for reordering
+
+## Adding a category
+
+<Steps>
+  <Step title="Click 'New Category'">
+    Top right.
+  </Step>
+  <Step title="Set name (English)">
+    Required. Will appear in inventory filters and on PDFs.
+  </Step>
+  <Step title="Set name (Thai)">
+    Strongly recommended. Used for Thai-language PDFs and the portal.
+  </Step>
+  <Step title="Set the prefix">
+    3–5 uppercase letters. Used for new Asset IDs in this category.
+  </Step>
+  <Step title="Save">
+    Category is active and selectable on new inventory items.
+  </Step>
+</Steps>
+
+## Editing a category
+
+<Steps>
+  <Step title="Find the category">
+    In the list. You can search if there are many.
+  </Step>
+  <Step title="Click the pencil icon">
+    Edit name (EN), name (TH), or prefix.
+  </Step>
+  <Step title="Save">
+    Changes apply immediately.
+  </Step>
+</Steps>
+
+### Editing English name
+
+Safe at any time. Existing items in the category get the new name in their display.
+
+### Editing Thai name
+
+Same — safe, applies immediately. Especially valuable when you first set up a category and didn't have the right Thai term yet.
+
+### Editing the prefix
+
+<Warning>
+  You **cannot** change the prefix of a category that already has items assigned. The prefix is part of every existing Asset ID and changing it would break scan history.
+</Warning>
+
+To effectively change a prefix:
+
+1. Archive the existing category (deactivate, leaving items intact).
+2. Create a new category with the new prefix.
+3. Bulk-reassign items from the old category to the new (one item at a time, or via CSV bulk update).
+
+For most businesses, picking the right prefix at the start is easier than changing later.
+
+## Reordering categories
+
+Drag the handle on the left of any category to reorder. The order applies to:
+
+- The category filter dropdown in the inventory list
+- The grouping when inventory is grouped by category
+- Quote PDF order if grouped by category
+
+Most businesses put the most-used categories at the top.
+
+## Deactivating vs deleting
+
+You **cannot delete** a category that has any items, even archived items. Instead, **deactivate**.
+
+### Deactivating
+
+<Steps>
+  <Step title="Open the category">
+    Click the category in the list.
+  </Step>
+  <Step title="Click 'Deactivate'">
+    Confirm.
+  </Step>
+</Steps>
+
+The deactivated category:
+
+- No longer appears in new-item creation
+- Existing items keep their assignment (so old PDFs still render correctly)
+- Can be reactivated at any time
+
+### Deleting (rarely needed)
+
+If you really want to delete a category:
+
+<Steps>
+  <Step title="Reassign every item">
+    Move every item out of the category. Use bulk edit on the inventory list.
+  </Step>
+  <Step title="Open the empty category">
+    The Delete button is now active.
+  </Step>
+  <Step title="Click 'Delete'">
+    Confirm. The category is gone permanently.
+  </Step>
+</Steps>
+
+For audit cleanliness, we recommend deactivating instead of deleting. Deactivation preserves historical data; deletion erases it.
+
+## Thai name field
+
+Every category has a separate **Thai name** field. This Thai name is what Thai customers see:
+
+- On bilingual quote and invoice PDFs (Thai-first if the customer is Thai)
+- In the customer portal when language is set to TH
+- In AI Job Reports translated into Thai
+
+If you don't set a Thai name, the English name is shown in both languages — which works but isn't ideal for Thai customers.
+
+## Suggested Thai names
+
+If you're not sure what Thai term to use:
+
+| English | Thai |
+| --- | --- |
+| Camera | กล้อง |
+| Lens | เลนส์ |
+| Audio | ระบบเสียง |
+| Lighting | แสง / ไฟ |
+| Grip | กริป (อุปกรณ์ยึด) |
+| Power | ไฟฟ้า / แบตเตอรี่ |
+| Cases & Bags | กระเป๋าและเคส |
+| Accessories | อุปกรณ์เสริม |
+| Drone | โดรน |
+| Tripod | ขาตั้ง |
+| Monitor | จอมอนิเตอร์ |
+
+When in doubt, ask a Thai-speaking team member or customer what term they actually use — industry conventions vary.
+
+## Audit trail
+
+Every category change is logged in **Settings → Audit Log** — who created, edited, deactivated, or deleted, with timestamps. Use the audit log to investigate any unexpected category changes.

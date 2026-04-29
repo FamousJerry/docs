@@ -1,0 +1,110 @@
+---
+title: "Recording a Payment"
+description: "How to record cash, transfer, PromptPay, and partial payments on an invoice."
+icon: "money-bill"
+---
+
+When a customer pays — whether by bank transfer, cash, or PromptPay — you record the payment against the invoice. The invoice status updates and a receipt is generated.
+
+## Recording a payment
+
+<Steps>
+  <Step title="Open the invoice">
+    From the Invoices list or the customer's detail panel.
+  </Step>
+  <Step title="Click 'Record Payment'">
+    A side panel opens.
+  </Step>
+  <Step title="Enter the amount">
+    Defaults to the full balance. You can change it for partial payments.
+  </Step>
+  <Step title="Pick the payment method">
+    Bank Transfer, Cash, PromptPay, Credit Card, Cheque, or Other.
+  </Step>
+  <Step title="Add the reference">
+    Bank slip number, transaction ID, or any reference you want to keep.
+  </Step>
+  <Step title="Set the payment date">
+    Defaults to today. Edit if the payment came in earlier.
+  </Step>
+  <Step title="Attach proof (optional)">
+    Upload a screenshot of the bank slip or PromptPay confirmation. Stored on the invoice.
+  </Step>
+  <Step title="Save">
+    The payment is recorded. The invoice status updates. A receipt is generated.
+  </Step>
+</Steps>
+
+## Payment methods
+
+| Method | When to use |
+| --- | --- |
+| Bank Transfer | Customer transferred via online banking |
+| Cash | Paid in person |
+| PromptPay | Customer scanned the QR in the portal or your invoice |
+| Credit Card | If you accept cards via your own merchant |
+| Cheque | Cheque number goes in the reference field |
+| Other | Anything else — wallet apps, foreign transfers, etc. |
+
+The method is for reporting only — it doesn't trigger anything in your bank. JingjaiOps is not connected to your bank account; you record what came in.
+
+## Partial payments
+
+A partial payment is anything less than the invoice balance. Just enter the smaller amount when recording the payment.
+
+The invoice moves to **Partial** status with the new balance shown. You can record additional payments any time, each generating its own receipt. When the cumulative payment equals the invoice total, the invoice flips to **Paid**.
+
+Example flow:
+
+1. Invoice for ฿107,000 issued and sent.
+2. Customer pays ฿50,000 deposit-style → status: Partial, balance: ฿57,000.
+3. Customer pays remaining ฿57,000 → status: Paid, balance: ฿0.
+
+Each payment generates its own receipt. You can also send the full payment history (all receipts in one PDF) from the invoice's **Documents** tab.
+
+## Balance due calculation
+
+The invoice's **Balance** is always:
+
+```
+Balance = Total − Σ Payments + Σ Credit Notes
+```
+
+If a credit note is applied (e.g., for a damaged item adjustment), it reduces the balance the same way a payment does. The status flips to **Paid** when the balance reaches 0.
+
+## Receipt generation
+
+A receipt is generated automatically every time you record a payment. The receipt:
+
+- Has its own number, format `RC-YYYY-NNNN` (configurable prefix)
+- Lists the payment amount, method, reference, and date
+- References the original invoice number
+- Is bilingual EN/TH
+- Is downloadable from the invoice's Documents tab and the customer's portal
+
+For pre-payments (paid before the job starts), the receipt uses a different prefix `PREREC-YYYY-NNNN`. Read [Pre-payment](/invoices/prepayment) for more.
+
+## Payment history
+
+Each invoice has a **Payments** tab showing every payment recorded against it:
+
+| Date | Amount | Method | Reference | Receipt # |
+| --- | --- | --- | --- | --- |
+| 14 Mar 2026 | ฿50,000 | Bank Transfer | KBank slip 8824 | RC-2026-0182 |
+| 18 Mar 2026 | ฿57,000 | PromptPay | TXN-72-9914 | RC-2026-0211 |
+
+Click any row to see the full payment detail or download the receipt.
+
+## Editing or voiding a payment
+
+If you recorded a payment by mistake:
+
+1. Open the payment record from the Payments tab.
+2. Click **Edit** to change amount, method, or reference.
+3. Or click **Void** to remove it (Admin only).
+
+Voiding a payment voids the receipt as well. The invoice balance recalculates immediately. The action is logged in the audit trail with a required reason.
+
+<Tip>
+  If a customer asks you to "use my prior overpayment" against a new invoice, record the prior overpayment as a credit on the customer profile, then apply it as a Credit Note on the new invoice. JingjaiOps doesn't currently auto-apply prior overpayments.
+</Tip>

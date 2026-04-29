@@ -1,0 +1,63 @@
+---
+title: "Customers Overview"
+description: "Your customer database — profiles, history, health scores, and quick actions."
+icon: "users"
+---
+
+The Customers module is your single source of truth for every business or person you rent to. Open it from the sidebar to see your full customer list.
+
+## The list view
+
+The list shows all customers with these columns:
+
+| Column | What it shows |
+| --- | --- |
+| Name | Company name (or person name if not a company) |
+| Tax ID | Thai 13-digit tax ID, blank if not provided |
+| Contact | Primary contact name and phone |
+| Active Jobs | Count of jobs currently in any non-closed stage |
+| Outstanding | Total of unpaid and partial invoices |
+| Health Score | 0–100, color coded |
+| Preferred Language | EN or TH |
+
+Click any column header to sort. Use the search box at the top to filter by name, contact, phone, or tax ID.
+
+## Detail panel
+
+Click any customer to open the detail panel. The panel has these tabs:
+
+<Columns cols={2}>
+  <Card title="Overview" icon="circle-info">
+    Contact info, addresses, tax ID, preferred language, and a notes field.
+  </Card>
+  <Card title="Health Score" icon="heart-pulse" href="/customers/health-score">
+    Score breakdown across five factors with last refresh time.
+  </Card>
+  <Card title="Quotes" icon="file-signature">
+    Every quote ever sent to this customer with status and total.
+  </Card>
+  <Card title="Jobs" icon="truck">
+    Every job — past, current, and upcoming.
+  </Card>
+  <Card title="Invoices" icon="receipt">
+    Every invoice and its payment status.
+  </Card>
+  <Card title="Deposits" icon="vault">
+    Active and historical security deposits.
+  </Card>
+</Columns>
+
+## Quick actions
+
+Each customer card has a row of quick actions at the top of the detail panel:
+
+- **New Quote** — opens a quote form with this customer pre-filled.
+- **New Job** — only available if there is an accepted quote ready to convert.
+- **Generate Portal Link** — creates a fresh portal URL and copies it to your clipboard.
+- **Email** — opens your mail client to the primary contact.
+- **Edit** — edit the customer profile.
+- **Archive** — hides the customer from default lists. Existing records still link to them.
+
+<Tip>
+  Archived customers show up if you tick **Show Archived** at the top of the list. You can un-archive at any time.
+</Tip>

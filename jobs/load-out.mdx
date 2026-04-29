@@ -1,0 +1,78 @@
+---
+title: "Load Out"
+description: "The Loaded stage — confirming everything is on the truck, printing a manifest, and scheduling delivery."
+icon: "truck-ramp-box"
+---
+
+The Loaded stage is the brief but important moment between picking equipment and putting it in the truck. It's where you confirm that what was picked is what's actually loaded.
+
+## How a job enters Loaded
+
+A job moves to **Loaded** automatically when every line item in Pick & Scan has been scanned. You can also click **Mark Loaded** manually if Pick & Scan is complete.
+
+Once the job is **Loaded**, the Pick & Scan tab is read-only. To scan more items, an admin uses **Go Back** to return the job to Picking.
+
+## Confirming all items loaded
+
+The Load Out screen shows a final checklist organized by where the items are going (truck, van, hand-carry):
+
+| Asset | Item | From Kit | Destination |
+| --- | --- | --- | --- |
+| CAM-001 | Sony FX6 | Camera Kit A | Truck |
+| LEN-104 | 24-70mm Lens | Camera Kit A | Truck |
+| BAT-208 | V-Mount Battery | Camera Kit A | Truck |
+| ... | ... | ... | ... |
+
+Tick each row as you load. The checklist is just a UI helper — JingjaiOps already knows what's been scanned. But for a busy crew loading multiple jobs, it provides a focused view.
+
+## Printing the delivery manifest
+
+Click **Print Manifest** at the top of the Load Out screen. The manifest is a single-page PDF that goes with the truck. It includes:
+
+- Job number and customer name
+- Delivery address and contact
+- Job start/end dates
+- Driver name (if assigned)
+- Full list of asset IDs and items
+- Signature blocks for the driver and customer at delivery
+- A barcode for the job number, so the driver can scan it back at the warehouse
+
+The manifest is the legal handoff document. The customer signs it on delivery. Some businesses also have the driver sign it before leaving the warehouse to confirm a clean load-out.
+
+## Scheduling delivery
+
+If your business does its own deliveries, set the delivery details on the job:
+
+<Steps>
+  <Step title="Open the Delivery panel">
+    On the right side of the job detail, expand **Delivery & Logistics**.
+  </Step>
+  <Step title="Pick a driver">
+    Select from staff users with the Driver role.
+  </Step>
+  <Step title="Set the vehicle">
+    Free-text — usually a license plate or vehicle name.
+  </Step>
+  <Step title="Set departure time">
+    Date and time. The system uses this to estimate the **Delivering** stage start time.
+  </Step>
+  <Step title="Save">
+    The driver gets a notification (in-app and email) with the manifest attached.
+  </Step>
+</Steps>
+
+When the driver leaves, click **Mark Delivering** on the job to advance the stage. This also pushes a notification to the customer's portal: **"On the way"**.
+
+## Hand-off to a third-party courier
+
+If you use a third-party courier (LINE Man, Lalamove, etc.), you don't track the truck inside JingjaiOps. Just:
+
+1. Click **Mark Delivering** when the courier picks up.
+2. Optionally paste the courier's tracking number into the **Internal Notes** field.
+3. Mark **On Site** when the customer confirms receipt.
+
+The customer portal still shows the friendly "On the way" message, even though JingjaiOps isn't tracking the courier directly.
+
+<Tip>
+  For high-value jobs, take a photo of the loaded truck with the manifest visible. Attach it to the job's **Documents** tab. It's a useful record if the customer disputes the count later.
+</Tip>

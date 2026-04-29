@@ -1,0 +1,105 @@
+---
+title: "Pre-payment"
+description: "Recording a payment before a job starts and how it appears on the final invoice."
+icon: "hand-holding-dollar"
+---
+
+A pre-payment is money received before a job's start date — typically a 50% advance against the rental balance. JingjaiOps tracks pre-payments separately so they show on the final invoice as a credit and don't get confused with the rental subtotal.
+
+## What a pre-payment is
+
+A pre-payment is **not** a deposit. The two are different:
+
+| | Deposit | Pre-payment |
+| --- | --- | --- |
+| Purpose | Refundable collateral against damage | Advance against the rental price |
+| VAT | Excluded | Included (if VAT applies) |
+| Refundable | Yes, if no damage | No — applies to the invoice |
+| Receipt prefix | `DEPR` | `PREREC` |
+
+Use pre-payment when the customer has agreed to pay some or all of the rental cost before equipment goes out.
+
+## Recording a pre-payment
+
+<Steps>
+  <Step title="Open the job">
+    The pre-payment is recorded against the job (the invoice may still be in Draft).
+  </Step>
+  <Step title="Click 'Record Pre-payment'">
+    From the Payments panel on the right side of the job detail.
+  </Step>
+  <Step title="Enter the amount">
+    The amount the customer paid in advance.
+  </Step>
+  <Step title="Pick payment method and reference">
+    Same options as a regular payment: Bank Transfer, Cash, PromptPay, etc.
+  </Step>
+  <Step title="Save">
+    A pre-payment receipt is issued (`PREREC-YYYY-NNNN`) and the customer's portal shows the receipt.
+  </Step>
+</Steps>
+
+## PREREC receipt numbering
+
+Pre-payment receipts use a separate sequence: `PREREC-YYYY-NNNN`.
+
+- `PREREC` — pre-payment receipt prefix (configurable)
+- `YYYY` — year
+- `NNNN` — sequence per year
+
+Keeping pre-payment receipts in a separate sequence makes accounting reconciliation cleaner — your books can distinguish revenue received in advance from revenue earned.
+
+## How pre-payments appear on the final invoice
+
+When the job finalizes and the invoice is issued, the invoice PDF shows the pre-payment as a line below the totals:
+
+| | Amount |
+| --- | --- |
+| Subtotal (rental) | ฿100,000 |
+| VAT 7% | ฿7,000 |
+| **Grand Total** | **฿107,000** |
+| Pre-payment received (PREREC-2026-0017, 12 Mar 2026) | −฿50,000 |
+| **Balance Due** | **฿57,000** |
+
+The pre-payment line clearly shows the receipt number and the date received, so the customer can match it to their bank record. The balance due is what they still owe.
+
+## Multiple pre-payments
+
+A job can have multiple pre-payments. Each one:
+
+- Gets its own `PREREC` receipt number
+- Appears as a separate line on the final invoice
+- Is summed into the total pre-payments applied
+
+For example, if a customer pays in three installments:
+
+```
+Pre-payment received (PREREC-2026-0017, 1 Feb 2026)   −฿30,000
+Pre-payment received (PREREC-2026-0018, 15 Feb 2026)  −฿30,000
+Pre-payment received (PREREC-2026-0023, 1 Mar 2026)   −฿40,000
+─────────────────────────────────────────────────
+Total pre-payments applied                            ฿100,000
+Balance Due                                           ฿7,000
+```
+
+## VAT on pre-payments
+
+Under Thai VAT rules, VAT is owed when payment is received OR when service is rendered, whichever comes first. If your business is VAT-registered, you may need to issue a Tax Invoice for each pre-payment as it comes in.
+
+JingjaiOps prompts you for this:
+
+- When you record a pre-payment, a checkbox asks **"Issue Tax Invoice for this pre-payment?"**
+- If ticked, a `TI-PREREC-YYYY-NNNN` Tax Invoice is generated alongside the receipt.
+
+Discuss the right approach with your accountant — small businesses often issue the Tax Invoice once on the final invoice, while larger businesses issue per pre-payment.
+
+## Refunding a pre-payment
+
+If a job is cancelled before delivery and you've already taken a pre-payment, refund it:
+
+1. Open the job, click **Cancel Job**.
+2. JingjaiOps prompts you to refund pending pre-payments.
+3. Pick refund method (typically reverse the original transfer).
+4. A refund receipt is issued (negative amount) for your records.
+
+The customer sees the refund in their portal as **"Refunded"**.

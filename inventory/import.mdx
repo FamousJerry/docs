@@ -1,0 +1,119 @@
+---
+title: "CSV Import"
+description: "Bulk-import inventory from a CSV — template format, preview, and the matching sheet."
+icon: "file-import"
+---
+
+The CSV import tool in **Settings → Import** lets you bring inventory in from a spreadsheet — useful for migrating from a legacy system, recording a fresh shipment of 50+ items, or doing a one-time data refresh.
+
+## When to use CSV import
+
+Use CSV import when:
+
+- You're starting fresh and have an existing inventory list in a spreadsheet
+- You're adding many items at once (a fresh shipment of 20+ items)
+- You're migrating from another rental system
+
+For one-off additions, the single-item form is faster.
+
+## CSV template
+
+Get the template from **Settings → Import → Download Template**. The template includes one header row and example rows you can replace.
+
+Required columns:
+
+| Column | Notes |
+| --- | --- |
+| `name_en` | English item name |
+| `category` | Must match an existing category name (Camera, Lighting, etc.) |
+| `rate` | Numeric, e.g. `1500` |
+| `rate_type` | `daily`, `weekly`, or `monthly` |
+| `condition` | `good`, `fair`, or `damaged` |
+
+Optional columns:
+
+| Column | Notes |
+| --- | --- |
+| `name_th` | Thai item name |
+| `serial_number` | Manufacturer's serial |
+| `manufacturer` | Brand |
+| `model` | Model number |
+| `purchase_date` | YYYY-MM-DD |
+| `purchase_price` | Numeric |
+| `ownership` | `owned`, `subrented`, `consignment` |
+| `storage_location` | Free text |
+| `notes` | Free text |
+
+## One row per physical item
+
+This is the most important rule of the import: **one row per physical unit**.
+
+If you own 5 identical Sony FX6 cameras, your CSV should have 5 rows — one for each camera. JingjaiOps will create 5 inventory items with 5 different Asset IDs (`CAM-001` through `CAM-005`).
+
+Don't put `quantity: 5` on a single row — JingjaiOps doesn't support that. Each physical unit has to exist separately so it can be tracked, scanned, and condition-marked individually.
+
+If your legacy spreadsheet has a single row per "model" with a quantity column, expand it before importing. Most spreadsheet tools have a "duplicate row N times" macro or you can use a quick Python script.
+
+## Importing from a legacy spreadsheet
+
+If your existing spreadsheet has different column names than the JingjaiOps template, the easiest path is:
+
+<Steps>
+  <Step title="Save your existing spreadsheet as CSV">
+    From Excel or Google Sheets.
+  </Step>
+  <Step title="Open the JingjaiOps template">
+    In a new sheet.
+  </Step>
+  <Step title="Map columns">
+    Copy each existing column into the matching JingjaiOps column. Skip ones that don't fit — the optional fields can be empty.
+  </Step>
+  <Step title="Expand quantity rows">
+    For any row with `quantity > 1`, duplicate the row that many times. (In Google Sheets, the `=ARRAYFORMULA` and `=FLATTEN` functions help; or just do it by hand for small lists.)
+  </Step>
+  <Step title="Save the prepared CSV">
+    Download/export as CSV.
+  </Step>
+</Steps>
+
+## Preview before import
+
+JingjaiOps doesn't import blindly. After you upload the CSV, you see a **Preview** screen:
+
+- Total rows in the file
+- Rows that would be imported successfully
+- Rows with errors (missing required field, unknown category, invalid rate, etc.)
+- Per-row diff of what JingjaiOps will create
+
+Errors are highlighted with the specific issue ("Category 'Camera Body' not found — did you mean 'Camera'?"). You can:
+
+- Fix the CSV and re-upload
+- Skip error rows and import only the clean ones
+- Cancel entirely
+
+The import only commits when you click **Confirm Import** at the bottom of the preview.
+
+## Matching sheet PDF
+
+After a successful import, JingjaiOps generates a **Matching Sheet PDF**. This is a one-page-per-item PDF showing:
+
+- The new Asset ID (e.g., `CAM-001`)
+- The barcode
+- The item name and any details from your CSV
+
+You print the matching sheet, walk to the warehouse, and stick a label on each physical item using the matching sheet to make sure the right Asset ID lands on the right item. This is critical for legacy migrations where you're labeling existing inventory for the first time.
+
+The matching sheet is also sent to the email of whoever ran the import.
+
+## Importing kits and customers
+
+The import tool only handles inventory items. To import kits or customers in bulk, use:
+
+- **Kits** — currently no bulk import; build kits manually in the UI
+- **Customers** — separate **Settings → Import → Customers** tool with its own template
+
+## Re-running an import
+
+You can run the import as many times as needed. Subsequent imports only add new items — they don't update existing items or remove ones not in the CSV.
+
+If you need to bulk-update existing items, use the **Bulk Edit** feature on the inventory list (select rows, click **Bulk Edit**, change a field across all selected items).

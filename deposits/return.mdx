@@ -1,0 +1,144 @@
+---
+title: "Returning a Deposit"
+description: "Returning a deposit after job close — full return, partial deduction, and forfeit."
+icon: "rotate-left"
+---
+
+When a job closes and inspection is complete, the next step is returning the deposit. This is the moment of truth for the customer — clean returns get the deposit back; damage means a deduction.
+
+## Returning a deposit
+
+<Steps>
+  <Step title="Open the deposit">
+    From the Deposits list, or from the closed job's detail panel.
+  </Step>
+  <Step title="Click 'Return Deposit'">
+    A return panel opens with options.
+  </Step>
+  <Step title="Choose return type">
+    **Full Return**, **Partial Return**, or **Forfeit**.
+  </Step>
+  <Step title="Enter the return amount">
+    For Full: pre-filled with the deposit total. For Partial: enter what you're refunding. For Forfeit: amount is 0.
+  </Step>
+  <Step title="Pick the refund method">
+    Bank Transfer, Cash, PromptPay, or Other.
+  </Step>
+  <Step title="Add a return reference">
+    Bank slip number for the refund transfer, or "Cash, in person".
+  </Step>
+  <Step title="Add a note (required for partial/forfeit)">
+    Explain the deduction reason. This appears on the customer's receipt.
+  </Step>
+  <Step title="Save">
+    A DEPRR receipt is generated and the deposit status updates.
+  </Step>
+</Steps>
+
+## Return types
+
+### Full return
+
+Return the entire deposit to the customer. The deposit moves to **Returned** status.
+
+Use when the equipment came back in good condition with no damage or missing items.
+
+### Partial return
+
+Return some of the deposit, retain the rest. The deposit moves to **Partially Returned** status.
+
+Use when there was damage or missing items. Common deductions:
+
+- Broken or missing accessory: deduct replacement cost
+- Cleaning charge: deduct a flat fee
+- Late return: deduct a per-day surcharge
+
+The customer sees both amounts on the receipt — what was kept and what was returned, with the reason.
+
+### Forfeit
+
+Keep the entire deposit. The deposit moves to **Forfeited** status. No money is returned.
+
+Use only when the damage or loss exceeds the deposit amount. (For damage above the deposit value, you also need to invoice the customer for the excess — read below.)
+
+## DEPRR receipt generation
+
+A **Deposit Return Receipt** is generated when you save the return: `DEPRR-YYYY-NNNN`.
+
+- `DEPRR` — deposit return receipt prefix (configurable)
+- `YYYY` — year
+- `NNNN` — sequence per year
+
+The DEPRR PDF includes:
+
+- DEPRR number and date
+- Reference to the original deposit number (`DEP-YYYY-NNNN`) and the original DEPR
+- Original deposit amount
+- Amount returned
+- Amount deducted (if partial or forfeit) with reason
+- Refund method and reference
+- Customer's signature line if you want them to acknowledge receipt of the refund
+
+## Who returned and when
+
+Every deposit return logs:
+
+- **Returned by**: the staff user who processed the return
+- **Returned at**: timestamp
+- **Method**: how the refund was paid
+- **Reference**: bank slip number for the outbound transfer
+
+This audit trail is on the deposit detail and on the DEPRR receipt.
+
+## Damage exceeding the deposit
+
+If damage costs more than the deposit you're holding:
+
+<Steps>
+  <Step title="Forfeit the deposit">
+    The full amount is kept toward the damage cost.
+  </Step>
+  <Step title="Issue a separate damage invoice">
+    Create a manual invoice on the job for the additional amount above the deposit.
+  </Step>
+  <Step title="Issue a Tax Invoice">
+    The forfeited deposit and the additional damage invoice are both taxable. Generate the Tax Invoice covering both.
+  </Step>
+  <Step title="Notify the customer">
+    Send the damage invoice and Tax Invoice along with the DEPRR (showing forfeit). Be specific about the damage and the cost calculation.
+  </Step>
+</Steps>
+
+This is a sensitive moment — be clear, factual, and have photos and the AI Job Report ready in case the customer disputes.
+
+## Returning to the customer's portal
+
+The DEPRR receipt automatically shows in the customer's portal under their **Receipts** tab. The deposit section also updates:
+
+| Before return | After full return | After partial return |
+| --- | --- | --- |
+| Held: ฿20,000 | Returned: ฿20,000 | Returned: ฿15,000<br/>Retained: ฿5,000 (cracked filter) |
+
+For partial returns and forfeits, the reason text from your note is visible to the customer. Be professional in what you write — assume the customer will read it.
+
+## Editing or voiding a return
+
+If you record a return incorrectly (wrong amount, wrong reason):
+
+<Steps>
+  <Step title="Open the DEPRR receipt">
+    From the deposit's Documents tab.
+  </Step>
+  <Step title="Click 'Void'">
+    Provide a reason. The deposit returns to **Held** so you can re-record.
+  </Step>
+  <Step title="Reverse the bank transfer if needed">
+    If you actually moved money, you'll need to claw it back manually.
+  </Step>
+</Steps>
+
+Voided DEPRR receipts are kept in the audit log.
+
+<Tip>
+  Aim to return deposits within 5 business days of job close. Slow deposit returns are the single most common customer complaint in the rental business — fast, transparent returns are the cheapest customer-loyalty win you have.
+</Tip>

@@ -1,0 +1,118 @@
+---
+title: "Inventory Categories"
+description: "Custom categories for organizing inventory, with prefixes, Thai names, and reorder."
+icon: "tags"
+---
+
+Categories group inventory items by type — Camera, Lighting, Audio, Grip, etc. They control the asset ID prefix, the filter dropdown in the inventory list, and the grouping on PDFs.
+
+## Default categories
+
+JingjaiOps starts with these categories:
+
+| Category | Prefix | Thai |
+| --- | --- | --- |
+| Camera | CAM | กล้อง |
+| Lens | LEN | เลนส์ |
+| Audio | AUD | ระบบเสียง |
+| Lighting | LIT | แสง |
+| Grip | GRP | กริป |
+| Power | PWR | ไฟฟ้า |
+| Cases & Bags | CASE | กระเป๋าและเคส |
+| Accessories | ACC | อุปกรณ์เสริม |
+
+You can edit, add, or deactivate any of these in **Settings → Categories**.
+
+## Why categories matter
+
+Categories are not just organization — they affect:
+
+- **Asset ID prefix** — Each item's Asset ID starts with the category prefix.
+- **Bulk filtering** — The category filter on the inventory list.
+- **Quote PDF grouping** — Line items can be grouped by category for clarity.
+- **Thai display** — Each category has a Thai name shown to Thai customers.
+- **Reports** — Revenue and utilization reports break down by category.
+
+## Adding a new category
+
+<Steps>
+  <Step title="Open Settings → Categories">
+    Sidebar → Settings → Categories tab.
+  </Step>
+  <Step title="Click 'New Category'">
+    A form opens.
+  </Step>
+  <Step title="Set the name (English)">
+    The display name in EN.
+  </Step>
+  <Step title="Set the name (Thai)">
+    Optional but strongly recommended.
+  </Step>
+  <Step title="Set the prefix">
+    3–5 uppercase letters. Used for Asset IDs in this category.
+  </Step>
+  <Step title="Save">
+    Category is active. New items can be assigned to it.
+  </Step>
+</Steps>
+
+## Editing a category
+
+You can edit a category's name and Thai name at any time:
+
+<Steps>
+  <Step title="Open Settings → Categories">
+    The categories list shows every category.
+  </Step>
+  <Step title="Click the pencil icon">
+    Edit name or Thai name.
+  </Step>
+  <Step title="Save">
+    Changes apply immediately. All items in the category show the new name.
+  </Step>
+</Steps>
+
+<Warning>
+  You **cannot** change the prefix of a category that already has items assigned. The prefix is part of every existing Asset ID. To change a prefix, archive the category and create a new one.
+</Warning>
+
+## Reordering categories
+
+Drag categories up and down to set the display order. The order applies everywhere:
+
+- The category filter dropdown
+- The inventory list grouping (when grouped by category)
+- Quote PDF order (if grouped by category)
+
+Most businesses put their most-used categories at the top.
+
+## Deactivating vs deleting
+
+You can't delete a category that has any items. Instead, **deactivate** it:
+
+<Steps>
+  <Step title="Open the category">
+    Click the category in Settings.
+  </Step>
+  <Step title="Click 'Deactivate'">
+    The category disappears from new-item creation but existing items retain their assignment.
+  </Step>
+</Steps>
+
+Deactivated categories still show in reports and historical PDFs. They just can't be picked for new items.
+
+To fully delete a category, first reassign every item out of it (or archive every item), then click **Delete**. This is rarely needed — deactivation is usually enough.
+
+## Thai name field
+
+Every category has a **Thai name** field in addition to the English name. This Thai name is what Thai customers see:
+
+- On bilingual quote and invoice PDFs (Thai-first if the customer is Thai)
+- In the customer portal when language is set to TH
+- In the AI Job Report's Thai version
+
+If you don't set a Thai name, the English name is shown in both languages — which works but isn't ideal for Thai customers.
+
+<Tip>
+  Use category prefixes consistently with industry conventions when you can. CAM/LEN/AUD/LIT are widely understood by film and broadcast crews; novel prefixes work but cost a beat of recognition during scans.
+</Tip>

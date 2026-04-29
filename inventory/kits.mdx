@@ -1,0 +1,122 @@
+---
+title: "Inventory Kits"
+description: "Bundling items into kits that can be quoted and scanned as a single unit."
+icon: "boxes-packing"
+---
+
+A kit is a saved bundle of inventory items priced as one unit. Instead of adding 8 line items every time you quote a "Camera Kit A", you add the kit once and JingjaiOps expands the components automatically.
+
+## Why use kits
+
+Use kits for any combination of equipment you regularly rent together:
+
+- A **Camera Kit** with body, lens, batteries, charger, and case
+- A **Lighting Kit** with key/fill/back lights, stands, and modifiers
+- An **Audio Kit** with mics, recorder, cables, and case
+
+Benefits:
+
+- One line item on the quote instead of 8–10
+- One price for the customer rather than itemized
+- All components automatically reserved for the same dates
+- Pick & Scan expands the kit so nothing gets forgotten
+- Return inspection tracks each component's condition individually
+
+## Creating a kit
+
+<Steps>
+  <Step title="Open the Inventory module">
+    Switch to the **Kits** tab at the top.
+  </Step>
+  <Step title="Click 'New Kit'">
+    A form opens.
+  </Step>
+  <Step title="Set the kit name">
+    Bilingual name (English and Thai). What customers see on PDFs.
+  </Step>
+  <Step title="Set the kit rate and rate type">
+    The total rate for the entire kit, and Daily/Weekly/Monthly. This replaces individual component rates when quoted.
+  </Step>
+  <Step title="Add components">
+    Search inventory and add each item. Set quantity per kit (e.g., 2× battery).
+  </Step>
+  <Step title="Save">
+    The kit becomes available in quotes and Pick & Scan.
+  </Step>
+</Steps>
+
+## Adding items to a kit
+
+In the kit edit screen, the components panel shows each item you've added:
+
+| Component | Quantity per kit |
+| --- | --- |
+| Sony FX6 | 1 |
+| 24-70mm f/2.8 Lens | 1 |
+| V-Mount Battery | 2 |
+| Battery Charger | 1 |
+| Hard Case | 1 |
+
+To add more components, click **+ Add Component**, search inventory, and pick. To remove, click the X next to a row.
+
+A kit must have at least one component to be saved.
+
+## Using kits in quotes
+
+In the quote form, click **+ Add Line Item → Add Kit**. Pick the kit. The line is added with:
+
+- Kit name as description
+- Quantity (defaulting to 1)
+- Kit rate
+- Duration matching the quote dates
+
+If you set quantity to 2, JingjaiOps reserves 2× every component (so 2 cameras, 2 lenses, 4 batteries, etc.).
+
+The customer sees the kit on the PDF as a single line. The components are not itemized externally — they're internal to your inventory tracking.
+
+## Kit scanning in jobs
+
+At Pick & Scan time, the kit expands automatically. The crew sees:
+
+```
+Camera Kit A (1 of 1)
+  ├── Sony FX6 — needs 1
+  ├── 24-70mm Lens — needs 1
+  ├── V-Mount Battery — needs 2
+  ├── Battery Charger — needs 1
+  └── Hard Case — needs 1
+```
+
+Each component must be scanned individually. The kit is only marked picked when every component has a scanned asset ID assigned.
+
+This catches missing pieces early. Many rental businesses lose 5–10% of accessory revenue to forgotten components — kits eliminate that.
+
+## Kit availability
+
+A kit is available if **every component** is available for the requested dates. If even one component is unavailable, the kit shows as unavailable, with a tooltip telling you which component is the bottleneck.
+
+This is why you sometimes need spare components — to keep kits available when one camera is in maintenance, you need a backup body that can complete the kit.
+
+## Updating a kit
+
+If you change a kit's components or rate:
+
+- **Future quotes** use the new components and rate.
+- **Existing quotes** keep the components and rate they had at quote time. You can refresh a quote manually if you want it to reflect the new kit.
+- **Active jobs** are not affected — they continue with their original component list.
+
+This is by design — once a customer has agreed on a quote, the contract is fixed.
+
+## Archiving a kit
+
+To retire a kit (you no longer rent that combination):
+
+1. Open the kit.
+2. Click **•••** → **Archive Kit**.
+3. The kit no longer appears in new quotes but remains visible in past quotes and jobs.
+
+Archive instead of delete — past quote PDFs and reports still need to reference it.
+
+<Tip>
+  When designing kits, name them clearly enough that customers understand what they're getting. "Standard Camera Kit" beats "Kit A". Add a descriptive note to the kit's customer-facing description if needed.
+</Tip>

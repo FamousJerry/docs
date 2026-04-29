@@ -1,0 +1,118 @@
+---
+title: "Barcode Labels"
+description: "Printing barcode labels on a Zebra ZD230T and what each label contains."
+icon: "barcode"
+---
+
+Every inventory item gets a printed barcode label. The label sticks to the physical equipment and is what your crew scans at Pick & Scan and Return & Inspect.
+
+## Label format
+
+JingjaiOps prints minimalist labels that contain only what's needed for scanning. Each label has:
+
+- **Asset ID** as human-readable text (e.g., `CAM-001`)
+- **Barcode** below the Asset ID (Code 128)
+
+That's it. No logos, no item names, no rate. The Asset ID is the link to everything else — when the crew scans the barcode, JingjaiOps shows the full item details on screen.
+
+This minimalist design is intentional:
+
+- Labels stay readable even when small
+- The same label format works for any item type
+- If an item changes (different lens fitted, repaired, renamed), the label is still valid because the Asset ID never changes
+
+## Hardware
+
+JingjaiOps is tested with the **Zebra ZD230T** thermal transfer printer:
+
+- Prints sharp 203 dpi labels
+- Direct USB or Ethernet connection
+- Uses 1.25" × 1" thermal transfer labels
+- Sold widely in Thailand
+
+Other Zebra ZPL-compatible printers will also work. The output is generated as a printable PDF, so any printer that handles 1.25" × 1" labels can be used in a pinch.
+
+## Label size
+
+The default label size is **1.25" × 1"** (32mm × 25mm). This fits most equipment — camera bodies, lens barrels, light fixtures, batteries, cases.
+
+If you need larger labels for big equipment, JingjaiOps also supports **2" × 1"** and **3" × 1"** sizes. Set the size on a per-print basis when you click Print Label.
+
+## Printing a label
+
+### Single label
+
+<Steps>
+  <Step title="Open the item">
+    From the Inventory list.
+  </Step>
+  <Step title="Click 'Print Label'">
+    Top right of the item detail.
+  </Step>
+  <Step title="Choose label size">
+    Defaults to 1.25" × 1".
+  </Step>
+  <Step title="Send to printer">
+    The label PDF opens. Send to the Zebra printer like any other print job.
+  </Step>
+</Steps>
+
+### Bulk printing
+
+For new shipments where you need to print 50+ labels:
+
+<Steps>
+  <Step title="Open the inventory list">
+    Filter to the items you just added (e.g., today's date).
+  </Step>
+  <Step title="Select multiple">
+    Tick checkboxes next to the items.
+  </Step>
+  <Step title="Click 'Print Selected Labels'">
+    A multi-page PDF opens, one label per page.
+  </Step>
+  <Step title="Send to printer">
+    Print all pages. Labels print one after the other.
+  </Step>
+</Steps>
+
+## Scanning the labels
+
+Any USB or Bluetooth barcode scanner that emulates a keyboard works. Recommended scanners:
+
+- **Zebra DS2208** — entry-level USB scanner, very reliable
+- **Zebra DS3678** — heavy-duty, Bluetooth, holds up in a warehouse
+- **Honeywell Voyager 1450g** — affordable USB option
+
+You don't need a special "JingjaiOps scanner" — these scanners work because they type the scanned text into whatever field has focus, then press Enter.
+
+## Replacing a damaged label
+
+If a label gets torn, faded, or unreadable:
+
+<Steps>
+  <Step title="Open the item">
+    Find the item in inventory by name or serial number.
+  </Step>
+  <Step title="Click 'Reprint Label'">
+    Same as Print Label — produces a fresh label with the same Asset ID.
+  </Step>
+  <Step title="Stick the new label">
+    Remove the old one and apply the replacement.
+  </Step>
+</Steps>
+
+The Asset ID and barcode value are the same — old scan history continues to work without interruption.
+
+## Label placement tips
+
+- **Cameras and lenses**: stick on the side or bottom, away from screens and rotating rings.
+- **Cases**: outside on a flat surface, ideally near the latch so it's visible when stacked.
+- **Cables and small accessories**: wrap a label around with clear tape, or use a hang tag.
+- **Lights**: on the body or stand mount, away from heat-prone areas.
+
+For items that get a lot of contact (frequent in-and-out), use a **clear protective overlay** on top of the label to extend its life. JingjaiOps doesn't sell these — any 38mm × 28mm clear label sticker works.
+
+<Tip>
+  When you receive new gear, label everything before adding it to inventory in JingjaiOps. The first time you forget is the first time something goes out without a label and gets lost.
+</Tip>

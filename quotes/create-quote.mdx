@@ -1,0 +1,105 @@
+---
+title: "Creating a Quote"
+description: "Build a quote from scratch — fields explained, the AI quote builder, and duplicating an existing quote."
+icon: "plus"
+---
+
+You can create a quote from the Quotes list, the **+** quick-create menu, or directly from a customer's detail panel.
+
+## Step by step
+
+<Steps>
+  <Step title="Open the new quote form">
+    Click **New Quote** at the top of the Quotes list, or pick **New Quote** from the **+** menu.
+  </Step>
+  <Step title="Choose the customer">
+    Pick from your existing customer list, or click **New Customer** to add one inline.
+  </Step>
+  <Step title="Set the dates">
+    **Job Start** and **Job End** are required. The duration auto-fills based on these dates.
+  </Step>
+  <Step title="Set rental duration unit">
+    The default is **Weeks**. Switch to Days or Months if needed. Line item rates respect this unit.
+  </Step>
+  <Step title="Add line items">
+    Search inventory, add kits, or add manual lines. See [Line items](/quotes/line-items) for full detail.
+  </Step>
+  <Step title="Add a deposit (optional)">
+    Tick **Security Deposit Required** and enter the amount. Deposits are VAT excluded.
+  </Step>
+  <Step title="Set quote validity">
+    Default is 14 days. After this, the quote auto-expires if not accepted.
+  </Step>
+  <Step title="Add notes">
+    Internal notes (your team only) and customer-facing notes (printed on the PDF).
+  </Step>
+  <Step title="Save as draft or send">
+    **Save Draft** keeps it private. **Send to Client** moves it to Sent and emails the customer.
+  </Step>
+</Steps>
+
+## Field reference
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| Customer | Yes | Pick existing or create inline |
+| Quote Date | Yes | Defaults to today |
+| Job Start | Yes | First day of rental |
+| Job End | Yes | Last day of rental, inclusive |
+| Rental Duration Unit | Yes | Days, Weeks (default), or Months |
+| Expiry Date | Yes | Defaults to today + 14 days |
+| Currency | Yes | Defaults to your business setting (THB) |
+| VAT Rate | Yes | Defaults to your business setting (7%) |
+| Customer Notes | No | Printed on the PDF |
+| Internal Notes | No | Your team only |
+| Security Deposit | No | Toggle on, enter amount |
+| Optional Items | No | Add anywhere in line items |
+
+## AI quote builder
+
+If you'd rather describe the job in plain English (or Thai), click **AI Assist** at the top of the new quote form.
+
+<Steps>
+  <Step title="Describe the job">
+    Example: "3-day shoot in Phuket starting Friday, 4 cameras, 2 lighting kits, 1 audio package, full crew gear."
+  </Step>
+  <Step title="Review suggested line items">
+    Claude AI matches your description to inventory items and kits. Each suggestion shows quantity, duration, and rate.
+  </Step>
+  <Step title="Edit before saving">
+    You can change any line, remove items, or add more. The AI is a starting point, not the final answer.
+  </Step>
+</Steps>
+
+Read more in [AI Quote Builder](/ai/quote-builder).
+
+## Quote numbering
+
+Quotes are numbered automatically in the format `QT-YYYY-NNNN`:
+
+- `QT` — quote prefix (configurable in **Settings → Business Settings**)
+- `YYYY` — the year the quote was created
+- `NNNN` — a sequential number that resets each year, zero-padded to 4 digits
+
+The number is assigned the moment you save the draft. It cannot be changed afterwards.
+
+## Duplicating a quote
+
+If you regularly send similar quotes, duplicate an existing one rather than building from scratch:
+
+<Steps>
+  <Step title="Open the quote">
+    Click any quote in the list.
+  </Step>
+  <Step title="Choose Duplicate">
+    Click the menu (•••) at the top right and pick **Duplicate**.
+  </Step>
+  <Step title="Edit the copy">
+    A new draft opens with all line items copied. Update dates, customer, and any line changes.
+  </Step>
+  <Step title="Send">
+    Save or send as usual.
+  </Step>
+</Steps>
+
+The original quote is unchanged. Duplicates get a new quote number.

@@ -1,0 +1,115 @@
+---
+title: "Quote Line Items"
+description: "Adding items, kits, manual lines, discounts, optional items, and per-line notes."
+icon: "list"
+---
+
+Line items are the heart of a quote — each line is one piece of equipment, one kit, or one billable charge. JingjaiOps supports four types of lines.
+
+## Adding items from inventory
+
+<Steps>
+  <Step title="Click 'Add Line Item'">
+    Inside the quote, click the **+ Add Line Item** button.
+  </Step>
+  <Step title="Search inventory">
+    Type the item name, category, or asset ID. Live results appear below.
+  </Step>
+  <Step title="Pick the item">
+    Click any result to add it. The item's rate (per day/week/month) auto-fills based on your duration unit.
+  </Step>
+  <Step title="Set quantity and duration">
+    Quantity defaults to 1, duration matches the quote's start/end dates. Adjust if a single line covers a different period.
+  </Step>
+</Steps>
+
+If an item has multiple physical units (for example, you own 4 of the same camera body), JingjaiOps automatically reserves enough units to cover the quantity. You don't pick individual asset IDs at quote time — that happens at the Pick & Scan stage.
+
+## Adding kits
+
+Kits are bundles of inventory items priced as one unit (a "Camera Kit" might include camera body, lens, battery, charger, and case).
+
+<Steps>
+  <Step title="Click 'Add Kit'">
+    From the **+ Add Line Item** menu, choose **Add Kit**.
+  </Step>
+  <Step title="Pick the kit">
+    Search and select.
+  </Step>
+  <Step title="Quantity sets the number of kit copies">
+    Quantity 2 means two complete kits — JingjaiOps reserves 2× every component.
+  </Step>
+</Steps>
+
+The kit shows as a single line on the quote PDF with its overall rate. The components are not itemized to the customer. Internally, JingjaiOps tracks each component for availability and Pick & Scan.
+
+<Tip>
+  Read [Inventory Kits](/inventory/kits) to learn how to build and manage kits.
+</Tip>
+
+## Manual line items
+
+Use manual lines for charges that aren't tied to inventory:
+
+- Delivery fee
+- Setup labor
+- Damage waiver
+- Custom one-off charges
+
+<Steps>
+  <Step title="Click 'Add Manual Line'">
+    From the **+ Add Line Item** menu.
+  </Step>
+  <Step title="Enter description">
+    What the customer will see on the PDF. Bilingual: enter both EN and TH if needed.
+  </Step>
+  <Step title="Enter quantity, rate, and duration">
+    For one-time charges (like delivery), set duration to 1.
+  </Step>
+</Steps>
+
+## Setting quantity and duration
+
+Each line has its own quantity and duration. The default is:
+
+- **Quantity**: 1
+- **Duration**: matches the quote's overall rental period
+- **Duration unit**: matches the quote's rental duration unit (default Weeks)
+
+You can override either field per line. Common case: most equipment goes out for the full week, but the delivery charge is `1 × 1 day`.
+
+## Line item discounts
+
+Each line has a **Discount** field — a percentage off that line only.
+
+| Discount | Effect |
+| --- | --- |
+| 0% | No discount |
+| 10% | Line total reduced by 10% |
+| 100% | Line is free, still appears on PDF |
+
+The discount applies before VAT. The PDF shows the original rate, the discount %, and the discounted line total.
+
+For overall discounts (e.g., 5% off the whole quote), use a manual line item with a negative amount labeled "Discount".
+
+## Optional items
+
+Mark a line as **Optional** with the toggle next to it. Optional lines:
+
+- Appear on the PDF in a dedicated "Optional Items" block
+- Are NOT included in the subtotal or grand total
+- Show their individual price so the customer can pick add-ons
+
+When the customer accepts the quote, you'll see which optional items they want. (In the current release, optional acceptance is captured in customer notes during signing.)
+
+## Line item notes
+
+Each line has an optional **Note** field. The note prints under the line item on the PDF.
+
+Use this for:
+
+- Specific configurations ("Camera body only, no lens")
+- Conditions ("Includes 2 hours of operator time")
+- Compatibility info ("Works with our standard tripod plates")
+
+Internal-only notes go in the quote's **Internal Notes** field instead — those never appear on the PDF.

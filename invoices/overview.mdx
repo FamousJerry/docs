@@ -1,0 +1,96 @@
+---
+title: "Invoices Overview"
+description: "How invoices work in JingjaiOps — generation from jobs, statuses, numbering, and the live invoice list."
+icon: "receipt"
+---
+
+An invoice is a request for payment from a customer. JingjaiOps creates invoices automatically from jobs and tracks them all the way to a fully paid receipt.
+
+## How invoices are created
+
+Invoices are generated from jobs, not from scratch:
+
+- **At job creation** — a draft invoice is created automatically based on the quote total. It stays in **Draft** until you send it.
+- **At job close** — the draft is finalized with any extensions, damage charges, and adjustments. You issue it to the customer.
+- **For long jobs** — recurring invoices fire on the schedule you set up (weekly, monthly, etc.). Read [Recurring Invoices](/invoices/recurring).
+
+You can also create a manual invoice from the Invoices list (use this rarely — manual invoices aren't linked to a job, so reporting doesn't roll them up to revenue per rental).
+
+## Invoice number format
+
+Invoices use the format `INV-YYYY-NNNN`:
+
+- `INV` — invoice prefix (configurable in **Settings → Business Settings**)
+- `YYYY` — the year the invoice was finalized
+- `NNNN` — sequential, zero-padded to 4 digits, resets each year
+
+The number is assigned the moment you click **Send** (or **Finalize**). Drafts don't have a number — they show as **Draft #JOB-2026-0042** until issued.
+
+## Invoice list
+
+The Invoices list shows every invoice with these columns:
+
+| Column | What it shows |
+| --- | --- |
+| Number | `INV-YYYY-NNNN` |
+| Customer | Customer name |
+| Issue Date | When the invoice was sent |
+| Due Date | Default = issue date + payment terms (configurable) |
+| Total | Including VAT |
+| Paid | Amount received so far |
+| Balance | Total minus paid |
+| Status | Draft / Sent / Partial / Paid / Overdue |
+
+Use the status filter at the top of the list to see only one type at a time. You can also filter by customer or date range.
+
+## Statuses
+
+| Status | Meaning |
+| --- | --- |
+| **Draft** | Created, not yet issued. No invoice number. |
+| **Sent** | Issued, waiting for payment. |
+| **Partial** | Partially paid. Balance still due. |
+| **Paid** | Fully paid. A receipt has been issued. |
+| **Overdue** | Past due date with balance > 0. |
+
+A status change is automatic — you don't change it manually. Recording a payment moves the invoice to **Partial** or **Paid**. The system marks invoices **Overdue** at midnight on the due date.
+
+## Real-time updates
+
+Invoice status changes are visible in real time across:
+
+- The Invoices list
+- The customer's profile (Outstanding column)
+- The customer's health score
+- The dashboard "Outstanding" widget
+- The customer's portal — they see "Paid" the moment you record their payment
+
+## Common actions
+
+From the invoice detail screen:
+
+| Action | What it does |
+| --- | --- |
+| Send to Client | Email PDF + portal link to pay |
+| Record Payment | Mark all or part of the invoice paid |
+| Issue Tax Invoice | Generate a Thai Tax Invoice (ใบกำกับภาษี) |
+| Generate Receipt | Issue a receipt for any payment received |
+| Apply Credit Note | Reduce the invoice total (returns, adjustments) |
+| Void | Cancel an invoice in Draft or Sent status (Admin only) |
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Record a payment" icon="money-bill" href="/invoices/record-payment">
+    Cash, transfer, PromptPay — how to log payments.
+  </Card>
+  <Card title="Thai tax invoice" icon="file-invoice" href="/invoices/tax-invoice">
+    Issue a ใบกำกับภาษี for VAT-registered customers.
+  </Card>
+  <Card title="Pre-payment" icon="hand-holding-dollar" href="/invoices/prepayment">
+    Record a payment before the job starts.
+  </Card>
+  <Card title="Recurring billing" icon="repeat" href="/invoices/recurring">
+    Set up automatic invoicing for long-term rentals.
+  </Card>
+</Columns>

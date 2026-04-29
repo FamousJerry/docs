@@ -1,0 +1,144 @@
+---
+title: "Ask Your Data"
+description: "Ask questions about your business in plain English or Thai and get charts, tables, and numbers back."
+icon: "comment-dots"
+---
+
+**Ask Your Data** is a chat-style interface in **Reports** where you type a question in plain language and get an answer drawn from your live JingjaiOps data. No SQL, no report builders — just typing.
+
+## Where to find it
+
+Open **Reports** from the sidebar. The first option is **Ask Your Data** — a chat-style input at the top of the page.
+
+## Typing questions
+
+You can ask questions in either English or Thai. JingjaiOps:
+
+1. Reads your question.
+2. Translates it into a query against your live data.
+3. Returns the answer as a chart, table, or single number — whatever fits the question.
+
+The answer also includes a brief explanation in plain language so you understand what you're looking at.
+
+## Example questions
+
+### Revenue and money
+
+> "What was our revenue last month?"
+>
+> Returns: a single number with the date range. Below: a small line chart of monthly revenue for the past 12 months for context.
+
+> "Compare revenue this quarter to last quarter."
+>
+> Returns: a 2-bar chart with the difference and percentage change called out.
+
+> "Which customers paid us more than ฿500,000 in 2025?"
+>
+> Returns: a sorted table.
+
+### Inventory and utilization
+
+> "Which items got rented the most last month?"
+>
+> Returns: a top-20 table sorted by total rental days.
+
+> "What's our utilization on cameras this year?"
+>
+> Returns: a single percentage with a daily utilization line chart.
+
+> "Show me items that haven't been rented in 90 days."
+>
+> Returns: a table with the asset ID, item name, last rental date, and days since last rental.
+
+### Customer health
+
+> "Who are my top 10 customers by lifetime spend?"
+>
+> Returns: a sorted table with name, total revenue, and number of jobs.
+
+> "Show me customers with a health score below 40."
+>
+> Returns: a table with the customer name, score, breakdown, and last activity.
+
+### Damage and issues
+
+> "How much have we deducted from deposits this year?"
+>
+> Returns: a single number. Below: a list of the top 10 deductions with reasons.
+
+> "Which items have had damage marked the most?"
+>
+> Returns: a table sorted by damage count.
+
+### Forecasting
+
+> "How much revenue do I have on the books for next month?"
+>
+> Returns: a number and a list of upcoming jobs that contribute to it.
+
+> "Are we overbooked next weekend?"
+>
+> Returns: a calendar view showing which assets are double-booked, if any.
+
+## Mixed language
+
+You can ask in mixed Thai and English:
+
+> "ลูกค้าคนไหน outstanding มากกว่า 100,000 บาท?"
+
+Claude understands code-switching and pulls the right answer.
+
+## What the AI can answer
+
+| Topic | Coverage |
+| --- | --- |
+| Revenue (total, by period, by customer, by category) | Yes |
+| Outstanding balances | Yes |
+| Inventory utilization | Yes |
+| Customer health scores | Yes |
+| Damage and deposit deductions | Yes |
+| Job durations and counts | Yes |
+| Quote-to-job conversion rates | Yes |
+| Future bookings and forecast revenue | Yes |
+
+## What the AI does NOT do
+
+- **Doesn't change data.** It's read-only. It can't issue invoices, send emails, modify records, or do anything except answer questions.
+- **Doesn't predict prices.** It reports on data you have, not what you "should" charge.
+- **Doesn't replace your accountant.** For tax filings or financial statements, use the standard reports under **Reports → Standard Reports**.
+- **Doesn't see your bank balance.** JingjaiOps isn't connected to your bank — only what's recorded in JingjaiOps.
+
+## Saving questions
+
+If you ask a question regularly, save it:
+
+<Steps>
+  <Step title="Ask the question">
+    Get your answer.
+  </Step>
+  <Step title="Click 'Save as Report'">
+    Below the answer.
+  </Step>
+  <Step title="Name the report">
+    Give it a label like "Monthly Revenue Trend".
+  </Step>
+  <Step title="Find it under 'Saved Reports'">
+    Top of the Reports page. One click runs it again with the latest data.
+  </Step>
+</Steps>
+
+Saved reports also support scheduled emails — get the answer in your inbox every Monday morning.
+
+## Limitations
+
+- **Data freshness.** The AI sees your data as of the last few seconds. Very recent transactions may not be included if they happened in the last 5 seconds.
+- **Complex multi-step questions.** Questions like "compare A to B and then break down by C" may need to be split into two separate questions.
+- **Privacy.** The question and the data sample are sent to the Claude API for processing. Read the privacy section in [AI Overview](/ai/overview) for details.
+- **Cost data.** The AI doesn't have access to your costs (what you paid for inventory). It only knows revenue and rates.
+
+## Tips
+
+- **Be explicit about the time period.** "Last month" is clearer than "recently".
+- **Specify currency** if you have multi-currency. Otherwise, THB is assumed.
+- **Try multiple phrasings** if the first answer doesn't fit. Sometimes "how many" beats "what's the count of".
+- **Read the explanation.** The AI tells you which records it included so you can verify.

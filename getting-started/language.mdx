@@ -1,0 +1,53 @@
+---
+title: "Language: English & Thai"
+description: "How JingjaiOps handles bilingual content for staff and customers."
+icon: "language"
+---
+
+JingjaiOps is fully bilingual. Every interface, PDF, email, and portal page can render in English or Thai. The language a person sees depends on their setting, not yours.
+
+## EN / TH toggle for staff
+
+The language toggle lives in the top bar next to your avatar.
+
+- **EN** — English interface, English-first PDFs.
+- **TH** — Thai interface, Thai-first PDFs.
+
+Your preference is saved to your user profile and follows you to any device.
+
+## Setting a customer's preferred language
+
+Each customer has a **Preferred Language** field on their profile. Set it to **TH** for Thai customers and **EN** for English-speaking customers.
+
+This setting controls:
+
+| Where | Effect |
+| --- | --- |
+| Quote PDFs | Bilingual layout with the preferred language listed first |
+| Invoice PDFs | Bilingual layout with the preferred language listed first |
+| Email subject and body | Sent in the customer's preferred language |
+| Client portal | Defaults to the customer's preferred language on first visit |
+| Receipt PDFs | Bilingual with preferred language first |
+
+## How bilingual PDFs work
+
+Quote and invoice PDFs always show **both languages** side by side. The customer's preferred language appears first; the other language appears beneath each line for reference.
+
+This means a Thai customer sees Thai prominently with English as backup, and an English customer sees the reverse. There is no version where one language is hidden — every contract is fully understandable in both languages, which matches the spirit of the Thailand Electronic Transactions Act.
+
+## Portal language
+
+The client portal has its own language toggle in the top right. The first time a client opens the portal, the language matches the **Preferred Language** on their customer record. They can switch at any time and the choice sticks for that device.
+
+<Tip>
+  Item names from inventory follow your inventory language settings. If an inventory item has a Thai name set in **Settings → Categories**, that name appears for Thai customers and the English name appears for English customers.
+</Tip>
+
+## Thai-specific behavior
+
+Some things only behave correctly in Thai mode:
+
+- **Thai Tax Invoice** (ใบกำกับภาษี) PDFs use Thai header text and Buddhist calendar dates.
+- **PromptPay QR codes** in the portal display in Thai for Thai-language clients.
+- **Thai address formatting** uses subdistrict / district / province order on PDFs.
+- **Thai number formatting** uses commas as thousands separators (same as EN) but currency renders as `฿` rather than `THB`.

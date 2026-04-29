@@ -1,0 +1,99 @@
+---
+title: "Deposits Overview"
+description: "Security deposits in JingjaiOps — VAT exclusion, the deposit dashboard, and DEP numbering."
+icon: "vault"
+---
+
+A security deposit is refundable money the customer pays before equipment goes out. It sits with you for the duration of the rental and is returned (or partially deducted) when equipment comes back inspected.
+
+## Why deposits are VAT excluded
+
+Under Thai VAT rules (Revenue Code Section 79), VAT is calculated on the value of goods or services supplied. A security deposit is not consideration for goods or services — it's collateral. Since:
+
+- The deposit is held, not earned
+- It is fully refundable on a clean return
+- Only a damage deduction (which is a separate VATable transaction) realizes any of it as revenue
+
+…the deposit itself is outside the scope of VAT. JingjaiOps automatically excludes deposits from VAT calculations on quotes and invoices.
+
+If a deposit is partially or fully forfeited due to damage, JingjaiOps prompts you to issue a separate Tax Invoice for the forfeited amount — that portion **is** treated as taxable income.
+
+## The Deposits dashboard
+
+The Deposits module gives you a real-time view of all deposit activity:
+
+| Metric | What it shows |
+| --- | --- |
+| **Total Held** | Sum of all deposits currently in your possession |
+| **Pending** | Deposits requested but not yet collected |
+| **Collected (this month)** | Deposits received in the current month |
+| **Returned (this month)** | Deposits returned in the current month |
+
+Below the metrics, the deposit list shows every deposit — held, returned, and pending — with filters for status, customer, date, and job.
+
+## Deposit list
+
+The list shows these columns:
+
+| Column | What it shows |
+| --- | --- |
+| Number | Deposit number, format `DEP-YYYY-NNNN` |
+| Customer | Customer name |
+| Job | Linked job number (if any) |
+| Amount | Deposit amount in THB |
+| Collected | Date the deposit was received |
+| Status | Pending / Held / Partially Returned / Returned / Forfeited |
+| Returned | Date and amount returned |
+
+## Statuses
+
+| Status | Meaning |
+| --- | --- |
+| **Pending** | Deposit requested but not yet collected |
+| **Held** | Money received and sitting with you |
+| **Partially Returned** | Some money returned, some retained for damage |
+| **Returned** | Full deposit returned to the customer |
+| **Forfeited** | Full deposit kept due to damage or loss |
+
+## Deposit number format
+
+Deposits use the format `DEP-YYYY-NNNN`:
+
+- `DEP` — deposit prefix (configurable in **Settings → Business Settings**)
+- `YYYY` — the year the deposit was created (when the quote was accepted)
+- `NNNN` — sequential, zero-padded to 4 digits, resets each year
+
+The number is assigned the moment the quote is accepted (since that's when the deposit is requested). Even if collection takes a few days, the deposit number is stable.
+
+## How deposits relate to quotes and jobs
+
+```
+Quote     →   Deposit Request   →   Deposit Collected  →   Job runs   →   Deposit Returned
+QT-2026-  →   DEP-2026-NNNN     →   DEPR-2026-NNNN     →   JOB-...    →   DEPRR-2026-NNNN
+NNNN          (Pending)             (Held)                              (Returned)
+```
+
+A single quote has at most one deposit. A single job has at most one deposit (inherited from the quote).
+
+If you want to ask for an additional deposit mid-job (rare — usually for extensions of high-value rentals), create a separate manual deposit on the job.
+
+## Common actions
+
+| Action | Where |
+| --- | --- |
+| Collect a deposit | Deposit detail → **Collect Payment** |
+| Generate a deposit request PDF | Deposit detail → **Send Request** |
+| Return a deposit | Deposit detail → **Return Deposit** |
+| Forfeit a deposit | Deposit detail → **Forfeit** (with reason) |
+| Partially deduct | Deposit detail → **Partial Return** |
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Collect a deposit" icon="hand-holding-dollar" href="/deposits/collect">
+    Record deposit receipt with method and reference.
+  </Card>
+  <Card title="Return a deposit" icon="rotate-left" href="/deposits/return">
+    Refund full or partial after job closes.
+  </Card>
+</Columns>

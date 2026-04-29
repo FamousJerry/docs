@@ -1,0 +1,109 @@
+---
+title: "Job Stages"
+description: "The 7 stages every job moves through, how to advance them, and how to undo a stage change."
+icon: "list-ol"
+---
+
+Every job in JingjaiOps moves through 7 stages from creation to closure. The stages reflect the physical state of the equipment, not just paperwork.
+
+## The 7 stages
+
+<Steps>
+  <Step title="New">
+    Job created from an accepted quote. Inventory is reserved but not yet pulled. No physical action has happened yet.
+  </Step>
+  <Step title="Picking">
+    Crew is in the warehouse pulling items off the shelf and scanning them out. The Pick & Scan tab is active.
+  </Step>
+  <Step title="Loaded">
+    All items scanned and loaded onto the delivery vehicle. Manifest can be printed.
+  </Step>
+  <Step title="Delivering">
+    Vehicle has left the warehouse. Equipment is in transit to the customer location.
+  </Step>
+  <Step title="On Site">
+    Equipment has arrived. The customer signs receipt, and the rental clock is running.
+  </Step>
+  <Step title="Returning">
+    Equipment is being collected and brought back to the warehouse.
+  </Step>
+  <Step title="Closed">
+    Items returned and inspected, condition recorded, AI job report generated, invoice issued. Job is finished.
+  </Step>
+</Steps>
+
+## Advancing a stage
+
+Each stage has a primary action button at the top of the job detail screen. The label changes based on the current stage:
+
+| Current Stage | Primary Action | Goes to |
+| --- | --- | --- |
+| New | Start Picking | Picking |
+| Picking | Mark Loaded | Loaded (only when all items scanned) |
+| Loaded | Mark Delivering | Delivering |
+| Delivering | Mark On Site | On Site |
+| On Site | Mark Returning | Returning |
+| Returning | Start Inspection | Triggers Return & Inspect tab |
+| (after inspection) | Close Job | Closed |
+
+Some stages also auto-advance:
+
+- **Picking → Loaded** automatically completes when every line item has been scanned out.
+- **Returning → Inspection** opens the Return & Inspect tab automatically when items are first scanned back in.
+
+## The "Go Back" button
+
+Stages aren't strictly forward-only. Sometimes you advance by mistake — for example, marking a job **Loaded** when one item is still missing.
+
+Admins and Super Admins see a **Go Back** button at the top of the job detail. It moves the job backwards by one stage:
+
+- Loaded → Picking
+- Delivering → Loaded
+- On Site → Delivering
+- Returning → On Site
+
+The action is logged in the audit trail with who clicked Go Back and when.
+
+<Warning>
+  Going back from **On Site** to **Delivering** does not unsend the customer's portal notification. They will see the stage change. Use Go Back sparingly, and let the customer know if you correct an error.
+</Warning>
+
+## Stage update visibility
+
+Every stage change is visible to:
+
+- All staff members (live, no refresh)
+- The customer in their portal (with friendlier labels — see below)
+
+### How customers see stages
+
+In the client portal, internal stage names are translated to customer-friendly language:
+
+| Internal Stage | Customer Portal Label |
+| --- | --- |
+| New | Booking confirmed |
+| Picking | Preparing your equipment |
+| Loaded | Ready to deliver |
+| Delivering | On the way |
+| On Site | Active rental |
+| Returning | Picking up |
+| Closed | Completed |
+
+The customer never sees raw inventory scans, missing-item alerts, or your internal notes. They see a clear, calm progress bar.
+
+## Time tracking
+
+Each stage transition records a timestamp. The job's **Activity** panel shows the full timeline:
+
+```
+14 Mar 2026, 09:00  — Job created from QT-2026-0042 (Sarah)
+14 Mar 2026, 13:22  — Picking started (Mongkol)
+14 Mar 2026, 15:48  — All items scanned, marked Loaded (Mongkol)
+15 Mar 2026, 06:30  — Marked Delivering (Mongkol)
+15 Mar 2026, 09:14  — Marked On Site (Mongkol)
+17 Mar 2026, 17:00  — Marked Returning (Sarah)
+17 Mar 2026, 18:42  — Inspection complete, no damage (Mongkol)
+17 Mar 2026, 19:05  — Job closed, invoice issued (Sarah)
+```
+
+This timeline is part of the job's permanent record and shows up on the AI job report.

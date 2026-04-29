@@ -1,0 +1,100 @@
+---
+title: "Pick & Scan"
+description: "Scanning equipment out of the warehouse with a barcode scanner during the Picking stage."
+icon: "barcode"
+---
+
+Pick & Scan is how you tell JingjaiOps which physical units of equipment are going out on a job. It runs during the **Picking** stage and uses a barcode scanner (or the camera on a phone).
+
+## Opening Pick & Scan
+
+<Steps>
+  <Step title="Open the job">
+    From the Jobs list. The job should be in **New** or **Picking** stage.
+  </Step>
+  <Step title="Click 'Start Picking'">
+    The job moves to **Picking** stage and the Pick & Scan tab opens.
+  </Step>
+</Steps>
+
+The tab shows two columns:
+
+- **Items to Pick** (left) — every unit needed for the job, broken down by line item and kit
+- **Picked** (right) — items you've already scanned, ready to load
+
+## Scanning equipment out
+
+<Steps>
+  <Step title="Plug in your barcode scanner">
+    JingjaiOps works with any USB or Bluetooth barcode scanner that emulates a keyboard. We recommend the Zebra ZD230T-paired scanners.
+  </Step>
+  <Step title="Click into the scan field">
+    Top of the Pick & Scan tab. The scan input is auto-focused when you open the tab.
+  </Step>
+  <Step title="Scan a barcode">
+    The scanner types the asset ID and presses Enter. JingjaiOps matches it to the line item and moves it to the Picked column.
+  </Step>
+  <Step title="Repeat for every item">
+    Continue until every line item is fully picked. The progress shows at the top: e.g. **18 / 24 items picked**.
+  </Step>
+</Steps>
+
+If you don't have a scanner handy, you can also click any item in the **Items to Pick** column and pick it manually — JingjaiOps will let you choose which physical asset ID to assign.
+
+## Kit expansion to individual items
+
+When a quote includes a kit, the Pick & Scan tab automatically expands the kit into its component items.
+
+For example, a "Camera Kit A" with 5 components shows up as:
+
+```
+Camera Kit A (1 of 1)
+  ├── Sony FX6 — needs 1
+  ├── 24-70mm Lens — needs 1
+  ├── V-Mount Battery × 2 — needs 2
+  ├── Battery Charger — needs 1
+  └── Hard Case — needs 1
+```
+
+Each component must be scanned individually. The kit isn't marked complete until every component is picked.
+
+This catches missing pieces before the truck leaves — you see immediately if the case is in but the charger isn't.
+
+## Checking availability conflicts
+
+When you scan an asset that's already reserved for another job in an overlapping date range, JingjaiOps stops you with a clear conflict message:
+
+> **Conflict: Sony FX6 (Asset ID: CAM-001) is reserved for JOB-2026-0058 from 16 Mar to 18 Mar.**
+
+You have three options:
+
+1. **Pick a different unit** — if you own multiple of the same item.
+2. **Override the conflict** — if you've already worked it out with the other job's crew. The override is logged in the audit trail.
+3. **Stop and resolve** — back out and adjust one of the jobs.
+
+Conflict checking happens at scan time, not at quote time, because you're committing a specific physical asset.
+
+## Print pull sheet
+
+Some warehouses prefer a paper checklist alongside the scanner. Click **Print Pull Sheet** at the top of the Pick & Scan tab.
+
+The pull sheet is a single-page PDF with:
+
+- Job number and customer name
+- Job dates
+- Every line item with quantity needed
+- Asset IDs already picked (if any)
+- Empty checkboxes next to unpicked items
+- Barcode for each line item (so you can scan from the sheet)
+
+The pull sheet is useful for crews picking deep in storage or in places with poor mobile signal. The actual scan-out still happens at the scanner; the sheet is a paper companion.
+
+## Marking the job Loaded
+
+Once every line item shows as picked, the **Mark Loaded** button at the top becomes active. Clicking it:
+
+1. Moves the job to **Loaded** stage
+2. Locks the picked asset list (no more scan-outs without going Back)
+3. Lets you print a delivery manifest
+
+Read [Load Out](/jobs/load-out) for what happens next.

@@ -1,0 +1,99 @@
+---
+title: "Settings Overview"
+description: "What's in the Settings module and who can access it."
+icon: "gear"
+---
+
+The Settings module is where you configure your business profile, manage staff, set notification rules, and define inventory categories. Most settings are configured once during onboarding and rarely changed.
+
+## Who can access Settings
+
+Settings is restricted to:
+
+- **Admin** — full access to every settings tab
+- **Super Admin** — full access plus user role management and billing
+
+Other roles (Crew, Sales, Billing) do not see the Settings module in the sidebar at all.
+
+If you need access to a setting and you don't have it, ask an Admin or Super Admin to update it for you, or upgrade your role.
+
+## Tabs available
+
+<Columns cols={2}>
+  <Card title="Business Settings" icon="building" href="/settings/business-settings">
+    Company details, currency, VAT, prefixes, payment terms.
+  </Card>
+  <Card title="Users & Roles" icon="users" href="/settings/users-roles">
+    Invite users, set roles, deactivate, manage 2FA.
+  </Card>
+  <Card title="Notifications" icon="bell" href="/settings/notifications">
+    Damage alerts, recipient lists, trigger conditions.
+  </Card>
+  <Card title="Categories" icon="tags" href="/settings/categories">
+    Inventory categories with prefixes and Thai names.
+  </Card>
+</Columns>
+
+Other tabs you may see depending on your plan:
+
+- **Billing** — your JingjaiOps subscription details and invoices (Super Admin only)
+- **Integrations** — Xero, QuickBooks, LINE, etc. (Operations plan and above)
+- **Portal** — branding and access-code rules
+- **Email Templates** — customize the default emails sent for quotes, invoices, receipts
+- **Import** — CSV imports for inventory and customers
+- **Audit Log** — chronological list of every settings change with who made it
+- **Usage** — current usage of AI features, storage, and other metered features
+
+## Common first-day setup
+
+If you're setting up JingjaiOps for the first time, work through the tabs in this order:
+
+<Steps>
+  <Step title="Business Settings">
+    Enter your company name, address, Tax ID, and PromptPay number. Set currency, VAT rate, and document prefixes.
+  </Step>
+  <Step title="Categories">
+    Review default categories and add anything you need (e.g., a custom "Drone" category).
+  </Step>
+  <Step title="Users & Roles">
+    Invite each staff member with the right role.
+  </Step>
+  <Step title="Notifications">
+    Add email recipients for damage alerts.
+  </Step>
+  <Step title="Email Templates">
+    Optionally customize the email sent with quotes and invoices.
+  </Step>
+  <Step title="Inventory Import">
+    Use CSV import to bring in your existing inventory.
+  </Step>
+</Steps>
+
+A clean first-day setup takes about 30 minutes if you have your data ready.
+
+## Audit log
+
+Every settings change is logged with:
+
+- The user who made the change
+- Timestamp
+- The old value and the new value
+
+The log is in **Settings → Audit Log** (Admin only). Use it to investigate any unexpected changes — for example, if a VAT rate suddenly looks wrong, the log shows who changed it and when.
+
+## Settings vs. business preferences
+
+Some "settings" are actually per-user preferences and live elsewhere:
+
+- **Language toggle (EN/TH)** — top bar, per-user
+- **Theme (light/dark)** — top bar, per-user
+- **Sidebar collapse** — bottom of sidebar, per-device
+- **Default duration unit on quotes** — top of new quote form, per-user
+
+Settings in the **Settings** module affect the whole business; preferences in the top bar affect only you.
+
+## Saving changes
+
+Most settings forms save automatically as you type or save explicitly with a **Save** button at the bottom of each section. Where save is explicit, you'll see "Unsaved changes" at the top of the page until you click Save.
+
+If you navigate away with unsaved changes, you get a prompt — "You have unsaved changes. Discard or stay?" — to prevent accidental loss.

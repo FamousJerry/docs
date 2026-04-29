@@ -1,0 +1,109 @@
+---
+title: "Thai Tax Invoice (ใบกำกับภาษี)"
+description: "When and how to issue a Thai Tax Invoice, the required fields, and the PDF format."
+icon: "file-invoice"
+---
+
+A **Tax Invoice** (Thai: **ใบกำกับภาษี**) is the legally required document for VAT-registered customers in Thailand. JingjaiOps generates Tax Invoices that comply with Thai Revenue Department requirements.
+
+## When to issue a Tax Invoice
+
+Issue a Tax Invoice when **all** of these are true:
+
+1. Your business is VAT-registered (you have a Thai VAT registration number)
+2. The customer is also VAT-registered (you have their 13-digit Tax ID)
+3. The transaction is subject to VAT (rentals are; pure deposits are not)
+
+If the customer is an individual or a non-VAT-registered business, you don't need a Tax Invoice — a regular invoice is fine. But many customers will ask for one regardless, and there's no harm in issuing it.
+
+## Generating a Tax Invoice
+
+A Tax Invoice can be issued from any **Sent**, **Partial**, or **Paid** invoice:
+
+<Steps>
+  <Step title="Open the invoice">
+    From the Invoices list.
+  </Step>
+  <Step title="Click 'Issue Tax Invoice'">
+    Top right, in the actions menu.
+  </Step>
+  <Step title="Confirm the customer's tax details">
+    JingjaiOps shows the customer's Tax ID, registered name, and registered address. If anything is missing, you'll be prompted to add it.
+  </Step>
+  <Step title="Confirm your business tax details">
+    Your business name, Tax ID, and registered address — pulled from Settings.
+  </Step>
+  <Step title="Generate">
+    A Tax Invoice PDF is generated with its own number (`TI-YYYY-NNNN`).
+  </Step>
+</Steps>
+
+The Tax Invoice is linked to the original invoice. You can find it on the invoice's **Documents** tab.
+
+## Required fields
+
+Thai law requires every Tax Invoice to include:
+
+| Field | Source |
+| --- | --- |
+| **Word "ใบกำกับภาษี" or "Tax Invoice"** prominently | Always shown |
+| **Seller name and address** | Settings → Business Settings |
+| **Seller VAT registration number** (13-digit Tax ID) | Settings → Business Settings |
+| **Buyer name and address** | Customer profile |
+| **Buyer VAT registration number** (13-digit Tax ID) | Customer profile |
+| **Branch identifier** (head office or branch number) | Customer profile |
+| **Tax Invoice number and date** | Auto-assigned (`TI-YYYY-NNNN`) |
+| **Description of goods/services** | Invoice line items |
+| **Quantity, unit price, total** | Invoice line items |
+| **Amount excluding VAT** | Calculated |
+| **VAT amount (7%)** | Calculated |
+| **Total including VAT** | Calculated |
+
+If any required field is missing, JingjaiOps stops you and asks for it before generating.
+
+## PDF format
+
+The Thai Tax Invoice PDF uses the standard Thai format:
+
+- Header: **"ใบกำกับภาษี / Tax Invoice"** in large type
+- Below the header: **"ต้นฉบับ"** (Original) on the original copy, **"สำเนา"** (Copy) on duplicates
+- Seller block at the top
+- Buyer block on the right
+- Tax Invoice number, date (Buddhist calendar), reference invoice number
+- Line items table
+- VAT calculation block
+- "Total amount in words" line in Thai (read out the grand total in words)
+- Authorized signature line
+
+The PDF is bilingual in headings (Thai primary, English secondary) but customer-facing text is in the language of the customer's preference.
+
+## Multiple copies
+
+When a Tax Invoice is generated, JingjaiOps creates two PDFs:
+
+- **Original (ต้นฉบับ)** — for the customer
+- **Copy (สำเนา)** — for your records
+
+Both are stored on the invoice's Documents tab. You only send the Original to the customer; keep the Copy for tax filings.
+
+## Voiding a Tax Invoice
+
+If a Tax Invoice is issued in error or the underlying invoice is voided, you must void the Tax Invoice as well:
+
+<Steps>
+  <Step title="Open the Tax Invoice">
+    From the original invoice's Documents tab.
+  </Step>
+  <Step title="Click 'Void'">
+    A reason field is required.
+  </Step>
+  <Step title="Issue a credit note (if needed)">
+    For a partial credit, generate a `CN-YYYY-NNNN` credit note instead of voiding.
+  </Step>
+</Steps>
+
+Voided Tax Invoices are kept in the archive — Thai law requires you to retain them, including the void reason.
+
+<Tip>
+  For invoices that span pre-payment and final settlement, talk to your accountant about whether to issue Tax Invoices per payment or once at the end. JingjaiOps supports both approaches.
+</Tip>

@@ -1,0 +1,110 @@
+---
+title: "Business Settings"
+description: "Company name, logo, address, tax ID, currency, VAT, prefixes, and payment terms."
+icon: "building"
+---
+
+Business Settings is where your company's identity lives in JingjaiOps. Everything here flows onto every PDF, email, and portal page.
+
+## Company information
+
+| Field | Notes |
+| --- | --- |
+| **Company Name (English)** | Appears on PDFs and emails |
+| **Company Name (Thai)** | Used for Thai-language PDFs |
+| **Logo** | PNG or SVG, max 1MB. Appears on PDFs and the portal header |
+| **Address** | Full registered address. Appears on PDFs and Tax Invoices |
+| **Phone** | Primary business phone |
+| **Email** | Main support email |
+| **Website** | URL printed on PDFs |
+
+For Thai customers, the Thai company name is shown first; for English customers, the English name is shown first.
+
+### Logo guidelines
+
+- **Light logo** — your logo on a light background (used on the standard PDF header and in the portal's light mode)
+- **Dark logo** — your logo on a dark background (used in the portal's dark mode)
+
+Upload both for the best result. If you only upload one, JingjaiOps uses it in both modes (with a slight risk that it doesn't look great in the off-mode).
+
+## Tax information
+
+| Field | Notes |
+| --- | --- |
+| **Tax ID** | Your 13-digit Thai Tax ID. Required to issue Tax Invoices |
+| **VAT Registration** | Tick if VAT-registered. Default 7% |
+| **Branch** | "Head Office" or a branch number |
+| **VAT Number** (if different from Tax ID) | Some businesses register VAT separately |
+
+If you tick VAT Registration, every quote, invoice, and Tax Invoice automatically calculates 7% VAT.
+
+## Currency and VAT rate
+
+| Field | Notes |
+| --- | --- |
+| **Currency** | Default THB. You can switch to USD, EUR, etc. for international quotes |
+| **VAT Rate** | Default 7%. The current Thai VAT rate. Editable for special cases |
+| **Round** | Round VAT to nearest 1 / 0.01. Default 0.01 |
+
+JingjaiOps supports multi-currency on a per-quote basis, but the business's default currency drives reports. Keep the default at THB unless almost all your business is foreign.
+
+## Document prefixes
+
+The prefixes for every document type are configurable:
+
+| Document | Default Prefix | Editable |
+| --- | --- | --- |
+| Quote | `QT-` | Yes |
+| Job | `JOB-` | Yes |
+| Invoice | `INV-` | Yes |
+| Tax Invoice | `TI-` | Yes |
+| Regular Receipt | `RC-` | Yes |
+| Pre-payment Receipt | `PREREC-` | Yes |
+| Deposit | `DEP-` | Yes |
+| Deposit Receipt | `DEPR-` | Yes |
+| Deposit Return Receipt | `DEPRR-` | Yes |
+| Credit Note | `CN-` | Yes |
+
+If you change a prefix, the change applies to **future** documents only. Past documents keep the prefix they were issued under.
+
+<Warning>
+  Changing prefixes mid-year can confuse accounting reconciliation. We recommend deciding on prefixes before issuing your first document and not changing them after.
+</Warning>
+
+## Payment terms defaults
+
+The default payment terms for new invoices:
+
+| Setting | Default | Notes |
+| --- | --- | --- |
+| **Default Terms (days)** | 30 | Net X days after issue |
+| **Late Fee** | None | Optional flat fee or percentage on overdue invoices |
+| **Reminder Schedule** | None | When to email automatic reminders for unpaid invoices |
+
+You can override these per invoice. The defaults apply to new invoices unless changed.
+
+## PromptPay
+
+For Thai customers, PromptPay is the dominant payment method. Set up:
+
+| Field | Notes |
+| --- | --- |
+| **PromptPay Type** | Phone Number, Tax ID, or e-Wallet ID |
+| **PromptPay ID** | Your PromptPay identifier |
+| **QR Branding** | Optional logo to overlay on the QR (max 200x200, must keep QR scannable) |
+
+Once set, every unpaid invoice in the customer portal shows a PromptPay QR with the exact balance amount pre-filled.
+
+## Thai-specific settings
+
+| Field | Notes |
+| --- | --- |
+| **Buddhist Calendar** | Tick to use Buddhist year (พ.ศ.) on Thai PDFs. Default on |
+| **Thai Number Words on Receipts** | Print the receipt amount in Thai words. Required by Thai accounting practice |
+| **Thai Address Format** | Use Thai-style subdistrict / district / province on Thai PDFs |
+
+These default on for businesses whose registered address is in Thailand.
+
+## Saving
+
+Click **Save Settings** at the bottom of the page. Changes apply immediately to all future documents and PDFs.

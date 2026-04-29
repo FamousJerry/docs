@@ -1,0 +1,89 @@
+---
+title: "Quotes Overview"
+description: "How quotes work in JingjaiOps — the lifecycle, statuses, and what's on a quote PDF."
+icon: "file-signature"
+---
+
+A quote is a priced proposal you send to a customer. When the customer accepts and digitally signs it, the quote becomes a job and equipment gets reserved.
+
+## Quote lifecycle
+
+<Steps>
+  <Step title="Draft">
+    You build the quote by adding inventory items, kits, or manual lines. No one outside your team sees it yet.
+  </Step>
+  <Step title="Sent">
+    You email or share a portal link. The customer can now view the quote.
+  </Step>
+  <Step title="Accepted">
+    The customer digitally signs through the portal. The signed PDF is attached and a deposit (if any) is requested.
+  </Step>
+  <Step title="Job Created">
+    You convert the accepted quote to a job with one click. The job inherits the line items and dates.
+  </Step>
+</Steps>
+
+A quote can also move to **Declined** (customer says no) or **Expired** (not accepted before the expiry date).
+
+## The quote list view
+
+The list shows every quote with these columns:
+
+| Column | What it shows |
+| --- | --- |
+| Number | Quote number, format `QT-YYYY-NNNN` |
+| Customer | Customer name |
+| Date | When the quote was created |
+| Expires | When the quote expires if not accepted |
+| Total | Final total including VAT |
+| Status | Draft / Sent / Accepted / Job Created / Declined / Expired |
+
+Click any column to sort. Use the status filter at the top to see only a single status.
+
+## Statuses in detail
+
+| Status | Meaning | Next action |
+| --- | --- | --- |
+| **Draft** | Being built. Not visible to the customer. | Add line items, then send. |
+| **Sent** | Customer has the link. | Wait for acceptance, follow up if needed. |
+| **Accepted** | Signed by customer. Deposit requested if applicable. | Convert to job. |
+| **Job Created** | A job exists for this quote. | Use the job. |
+| **Declined** | Customer rejected the quote. | Archive or revise and resend. |
+| **Expired** | Past the expiry date with no acceptance. | Re-quote if still relevant. |
+
+## Real-time updates
+
+Every quote status change shows up in real time for everyone in your team. If a customer accepts a quote on their phone at 9:47 PM, your sales lead sees the status flip to **Accepted** without refreshing.
+
+This also applies to the deposit step — when the deposit is paid, the quote and the customer's deposits tab both update instantly.
+
+## What's on a quote PDF
+
+A quote PDF is bilingual (EN/TH side-by-side) and includes:
+
+- Your company header (logo, name, address, tax ID)
+- Customer details
+- Quote number, date issued, expiry date
+- Line items with description, quantity, duration, rate, line total
+- Optional items (clearly marked, not in subtotal)
+- Subtotal, VAT (7%), grand total
+- Security deposit (separate, VAT excluded)
+- Terms and conditions block (configurable in Settings)
+- Signature block — empty until signed, then shows the digital signature, signer name, and timestamp
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Create a quote" icon="plus" href="/quotes/create-quote">
+    Build your first quote step by step.
+  </Card>
+  <Card title="Add line items" icon="list" href="/quotes/line-items">
+    Items, kits, manual lines, and discounts.
+  </Card>
+  <Card title="Send a quote" icon="paper-plane" href="/quotes/send-quote">
+    Email or portal link, what the customer sees.
+  </Card>
+  <Card title="Add a deposit" icon="vault" href="/quotes/deposits">
+    Security deposits on quotes.
+  </Card>
+</Columns>

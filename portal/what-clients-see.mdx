@@ -1,0 +1,128 @@
+---
+title: "What Clients See"
+description: "A tour of every customer portal screen — Home, Jobs, Invoices, Receipts, Documents."
+icon: "eye"
+---
+
+The customer portal is organized into five tabs. This page walks through each one so you know exactly what your customer is looking at when they call you with a question.
+
+## Home tab
+
+The first screen the customer lands on. Designed to answer "what's happening with my account right now?" without any clicks.
+
+Sections (top to bottom):
+
+- **Greeting and customer name**
+- **Active jobs** — list of jobs currently in any non-closed stage, with current stage and end date
+- **Outstanding invoices** — unpaid or partial invoices with PromptPay QR
+- **Pending deposits** — deposits requested but not yet paid
+- **Quick links** — shortcuts to the other tabs
+
+If everything is settled (no active jobs, no unpaid invoices, no pending deposits), the home tab shows a friendly "all caught up" state with a thank-you message and a way to contact you.
+
+## Jobs tab
+
+Every job tied to the customer, grouped by status:
+
+- **Active** (jobs in any non-closed stage)
+- **Upcoming** (jobs scheduled to start soon)
+- **Past** (closed and cancelled jobs)
+
+Click any job to see:
+
+- **Status banner** with the customer-friendly stage label
+- **Job dates**
+- **Equipment list** (friendly names, no asset IDs)
+- **Documents** (signed quote, signed delivery manifest, current invoice)
+- **AI Job Report** (for closed jobs, customer-facing version)
+- **Contact us** button
+
+## Invoices tab
+
+Every invoice tied to the customer, with status badges:
+
+- **Unpaid / Partial** (with a Pay button)
+- **Paid**
+- **Overdue** (with a Pay button)
+
+Click any invoice to see:
+
+- **Invoice PDF** rendered inline
+- **Payment details** (already-paid amounts, balance due)
+- **Pay button** if balance > 0
+- **Download** button for the PDF
+- **Tax Invoice** (if issued) downloadable separately
+
+## Receipts tab
+
+Every receipt issued to the customer:
+
+- Regular receipts (`RC-`)
+- Pre-payment receipts (`PREREC-`)
+- Deposit receipts (`DEPR-`)
+- Deposit return receipts (`DEPRR-`)
+
+Each receipt is listed with date, amount, and reference. Click any receipt to view the PDF or download.
+
+This tab is what customers use at year-end for their accounting — they grab every receipt of the year here and hand it to their bookkeeper.
+
+## Documents tab
+
+A flat list of every document tied to the customer:
+
+- Signed quotes
+- Invoices and Tax Invoices
+- Receipts (all types)
+- Deposit requests, DEPR, DEPRR
+- Delivery manifests
+- AI Job Reports (customer-facing version)
+
+Useful when the customer needs to grab everything in one place — a single download button bundles them into a zip.
+
+## PromptPay QR on unpaid invoices
+
+When a customer opens an unpaid invoice, the portal shows a **PromptPay QR code** below the invoice details. The QR is generated dynamically with:
+
+- Your business's PromptPay number (configured in **Settings → Business Settings**)
+- The exact balance due as the amount
+
+The customer scans the QR with their banking app, the amount auto-fills, and they confirm the transfer. After paying, they should:
+
+1. Take a screenshot of the bank confirmation
+2. Tap **I've paid** in the portal
+3. Optionally upload the screenshot
+
+Your team gets a notification ("Customer reported payment for INV-2026-0042"), reconciles against your bank statement, and records the payment. Once recorded, the invoice flips to Paid in the portal.
+
+JingjaiOps does not auto-detect bank receipts (Thai banking APIs don't currently provide that for small businesses). The customer-reports-pay flow is a hand-off signal, not an automatic confirmation.
+
+## Deposit section
+
+The deposit section appears on the home tab and on the relevant job detail. It shows:
+
+- **Held** — current deposit balance held by you
+- **Pending** — deposits requested but not yet paid (with PromptPay QR for payment)
+- **Returned** — historical deposit returns with date, amount, and any deduction reason
+
+For partial returns, the customer sees both the returned amount and the retained amount, with the reason text from your DEPRR notes.
+
+## Language toggle
+
+Top right of every page. EN / TH switch:
+
+- Defaults to the customer's preferred language on first visit
+- Persists in browser cookies
+- Switches every label, date format, and document language instantly
+
+## What customers do NOT see
+
+For privacy and operational separation, the portal hides:
+
+- Asset IDs (only friendly equipment names show)
+- Internal notes from your team
+- Other customers' data
+- Your inventory (only what's on their jobs)
+- Damage cost estimates (they only see what was deducted from their deposit, with reason)
+- Recommendations from the AI Job Report (those are internal-only)
+
+This hard wall between customer-facing and internal data means you can take notes freely without worrying that the customer will see them.

@@ -1,0 +1,129 @@
+---
+title: "Recurring Invoices"
+description: "Automated recurring billing for long-term rentals — frequency options, draft generation, and notifications."
+icon: "repeat"
+---
+
+For long rentals (a customer renting a piece of equipment for months or years), recurring invoices send a new invoice on a schedule without manual work each cycle.
+
+## When to use recurring billing
+
+Recurring invoices fit when:
+
+- The customer is on a long-term rental (1+ months)
+- The amount is the same (or follows a known formula) each cycle
+- You want a consistent billing cadence without re-keying each time
+
+For one-off rentals shorter than a month, a single invoice at job close is simpler.
+
+## Setting up recurring billing
+
+<Steps>
+  <Step title="Open the job">
+    Recurring billing is configured per job, not per customer.
+  </Step>
+  <Step title="Open the 'Billing Schedule' panel">
+    On the right side of the job detail.
+  </Step>
+  <Step title="Toggle 'Recurring Billing'">
+    A configuration form appears.
+  </Step>
+  <Step title="Pick the frequency">
+    Weekly, Biweekly, Monthly, Quarterly, or Annually.
+  </Step>
+  <Step title="Set the first billing date">
+    The date the first invoice will be drafted.
+  </Step>
+  <Step title="Set the end date">
+    Either a specific date, "until job ends," or "ongoing." The schedule respects this.
+  </Step>
+  <Step title="Set the per-period amount">
+    Defaults to the rental subtotal divided by the number of periods. You can override.
+  </Step>
+  <Step title="Save">
+    The schedule is active. The first invoice will be drafted automatically on the first billing date.
+  </Step>
+</Steps>
+
+## Frequency options
+
+| Frequency | Example schedule (start 1 Apr 2026) |
+| --- | --- |
+| **Weekly** | 1 Apr, 8 Apr, 15 Apr, 22 Apr, 29 Apr, ... |
+| **Biweekly** | 1 Apr, 15 Apr, 29 Apr, 13 May, ... |
+| **Monthly** | 1 Apr, 1 May, 1 Jun, 1 Jul, ... |
+| **Quarterly** | 1 Apr, 1 Jul, 1 Oct, 1 Jan, ... |
+| **Annually** | 1 Apr 2026, 1 Apr 2027, 1 Apr 2028, ... |
+
+For monthly schedules where the start day is the 31st of a month, the schedule snaps to the last day of the next month (April 30, May 31, June 30, etc.).
+
+## Auto-draft generation
+
+Each cycle, JingjaiOps automatically:
+
+1. Creates a new invoice in **Draft** status
+2. Pre-fills it with the per-period amount, line items, and VAT
+3. Sets the issue date to the scheduled billing date
+4. Sets the due date based on the customer's payment terms
+
+The draft is **not sent automatically**. A staff member must review and click **Send** to issue the invoice. This gives you a chance to apply any one-time charges (extra equipment, damage adjustments) or pause the cycle if needed.
+
+## Staff notifications
+
+When a draft is auto-generated, JingjaiOps sends an in-app notification and an email to:
+
+- The user who set up the recurring schedule
+- Any user with the **Billing** role
+- The customer's account manager (if assigned)
+
+The notification reads:
+
+> **A new recurring invoice is ready to review**
+>
+> JOB-2026-0042 — Customer ABC Co.
+> Draft for ฿107,000 — billing date 1 May 2026.
+> [Open & Review]
+
+## Adjusting a single cycle
+
+To make a change just for one cycle (one-time discount, extra item):
+
+<Steps>
+  <Step title="Open the draft">
+    From the notification or the Invoices list (filter by Draft).
+  </Step>
+  <Step title="Edit the line items">
+    Add, remove, or change. The original schedule is unaffected.
+  </Step>
+  <Step title="Send">
+    The invoice is issued with your changes. The next cycle goes back to the standard schedule.
+  </Step>
+</Steps>
+
+## Pausing or stopping a recurring schedule
+
+To pause:
+
+1. Open the job's Billing Schedule panel.
+2. Click **Pause Schedule**. No new drafts will be generated.
+3. Resume at any time — the next draft will be on the next scheduled date.
+
+To stop:
+
+1. Open the Billing Schedule panel.
+2. Click **End Recurring Billing**. No future drafts will be generated. Past invoices are unchanged.
+
+## Changing the amount mid-schedule
+
+If the customer's rental rate changes (price increase, change in equipment):
+
+1. Open the Billing Schedule panel.
+2. Click **Edit Schedule**.
+3. Change the per-period amount.
+4. Save. All future drafts use the new amount; past invoices are unchanged.
+
+For rate changes that affect a single billing cycle (proration), edit the draft directly in that cycle.
+
+<Tip>
+  Recurring invoices and the **Pre-payment** feature work well together. Some customers prefer to pay several months in advance — record those as pre-payments, and they'll automatically apply to the recurring invoices as they're drafted.
+</Tip>

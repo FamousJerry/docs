@@ -1,0 +1,136 @@
+---
+title: "Notifications"
+description: "Damage and missing alerts — recipients, triggers, and enable/disable."
+icon: "bell"
+---
+
+Notifications in JingjaiOps tell the right people the moment something needs attention — most importantly, when an item comes back damaged or doesn't come back at all.
+
+## Damage and missing alerts
+
+When you mark an item **Damaged** or **Missing** during Return & Inspect, JingjaiOps fires an alert email to a configured list of recipients. This is the most important automation in the app — it pulls in operations, accounting, or insurance contacts immediately rather than waiting for someone to log in.
+
+## Adding email recipients
+
+<Steps>
+  <Step title="Open Settings → Notifications">
+    From the sidebar.
+  </Step>
+  <Step title="Click 'Add Recipient'">
+    A form appears.
+  </Step>
+  <Step title="Enter the email">
+    Any valid email address — does not need to be a JingjaiOps user.
+  </Step>
+  <Step title="Pick the trigger">
+    Damaged, Missing, or Both.
+  </Step>
+  <Step title="Pick the language">
+    EN or TH for the alert email.
+  </Step>
+  <Step title="Save">
+    The recipient is now active.
+  </Step>
+</Steps>
+
+You can add as many recipients as you need. Common patterns:
+
+- Operations Lead — gets all damaged + missing alerts
+- Accounting — gets only Missing alerts (so they know to forfeit deposits)
+- Insurance Broker — gets damaged alerts above a certain value
+- Owner — gets all alerts in summary form
+
+## Trigger options
+
+Each recipient is configured to receive one of:
+
+| Trigger | When the alert fires |
+| --- | --- |
+| **Damaged** | Item marked Damaged at inspection |
+| **Missing** | Item marked Missing at inspection |
+| **Both** | Either condition triggers an alert |
+
+You can have one recipient on Damaged-only and another on Missing-only — flexibility per recipient.
+
+## What's in the alert email
+
+The alert includes:
+
+- Subject: "🚨 Damage / Missing alert: {Job Number}"
+- Customer name
+- Job number and dates
+- Item that was flagged (asset ID, item name)
+- Condition (Damaged or Missing)
+- Notes you typed at inspection
+- Photos attached to the inspection (rendered inline)
+- Estimated cost (if you typed one)
+- A button **Open Job in JingjaiOps**
+
+The email is sent in the recipient's configured language (EN or TH).
+
+## Enable / disable globally
+
+If you want to temporarily silence alerts (e.g., during a known maintenance period where you'll be marking many items as damaged for routine reasons):
+
+<Steps>
+  <Step title="Open Settings → Notifications">
+    Top of the page.
+  </Step>
+  <Step title="Toggle 'Damage Alerts'">
+    Off — no alerts fire. On — alerts fire to configured recipients.
+  </Step>
+</Steps>
+
+The toggle is global. When you turn it back on, future damage events fire normally; missed events during the off period are not retroactively sent.
+
+## Per-customer suppression
+
+For some customers (a long-term contract where damage is expected and handled separately), you may want alerts off for that customer only:
+
+<Steps>
+  <Step title="Open the customer">
+    From the Customers list.
+  </Step>
+  <Step title="Open 'Notification Preferences'">
+    Bottom of the customer profile.
+  </Step>
+  <Step title="Toggle 'Suppress damage alerts'">
+    Damage events on this customer's jobs will not fire alerts.
+  </Step>
+</Steps>
+
+Even with alerts suppressed, the damage is still recorded on the job and visible in reports. You're just not paging anyone about it.
+
+## Other notification types
+
+JingjaiOps also sends notifications for:
+
+| Event | Recipient |
+| --- | --- |
+| New recurring invoice draft ready | User who set up the schedule, plus Billing role |
+| Quote accepted by customer | Quote owner, Sales role |
+| Invoice paid in full | Invoice owner, Billing role |
+| Customer reported PromptPay payment | Billing role |
+| User invitation sent | Inviter |
+
+These notifications go to in-app notifications (the bell icon in the top bar) and are NOT configurable per user. They go to whoever has the appropriate role.
+
+## In-app vs email
+
+| Channel | When |
+| --- | --- |
+| In-app | Most events. Visible from the bell icon, persists until read |
+| Email | Damage / missing alerts only by default |
+
+If you want email for additional events (e.g., quote accepted), enable it in **Settings → Notifications → Email Preferences**. Defaults are conservative because most teams don't want every event in their inbox.
+
+## Notification log
+
+Every notification sent is logged in **Settings → Notifications → Log**:
+
+| Sent at | Recipient | Type | Status |
+| --- | --- | --- | --- |
+| 14 Mar 2026 17:48 | ops@you.com | Damage Alert | Delivered |
+| 14 Mar 2026 17:48 | accounting@you.com | Damage Alert | Delivered |
+
+Click any row to see the full email content. Useful for debugging "I didn't get the alert" complaints.

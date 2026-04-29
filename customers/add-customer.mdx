@@ -1,0 +1,67 @@
+---
+title: "Adding a Customer"
+description: "Create a new customer record and learn what each field is used for."
+icon: "user-plus"
+---
+
+You can add a customer from the **Customers** list, the quick-create **+** button, or the customer dropdown when starting a new quote.
+
+## Step by step
+
+<Steps>
+  <Step title="Open the new customer form">
+    Click **New Customer** at the top right of the Customers list, or pick **New Customer** from the **+** menu.
+  </Step>
+  <Step title="Choose customer type">
+    **Company** for businesses, **Individual** for private clients. The type controls which fields are required.
+  </Step>
+  <Step title="Fill required fields">
+    See the table below. Required fields are marked with a red asterisk in the form.
+  </Step>
+  <Step title="Add optional details">
+    Tax ID, billing address, secondary contacts, notes — fill what you have.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The customer is created instantly and the detail panel opens.
+  </Step>
+</Steps>
+
+## Required fields
+
+| Field | Notes |
+| --- | --- |
+| Name | Company or person name. Used on every PDF. |
+| Primary Contact | Name + at least one of phone or email. |
+| Preferred Language | EN or TH. Drives PDF language order and portal default. |
+
+## Optional fields
+
+| Field | Why it matters |
+| --- | --- |
+| Tax ID | Required to issue a Thai Tax Invoice. 13 digits, no dashes. |
+| VAT Registered | Tick if the customer is registered for VAT. |
+| Billing Address | Appears on quotes and invoices. |
+| Delivery Address | Used as the default for jobs. Editable per job. |
+| Secondary Contacts | Multiple people with role labels (Accounting, Operations, etc.). |
+| Notes | Private notes only your team sees. Never appears on PDFs or in the portal. |
+| Customer Code | Optional internal code for your accounting system. |
+
+## After creating
+
+Once the customer is saved, the most common next steps are:
+
+<Columns cols={2}>
+  <Card title="Build a quote" icon="file-signature" href="/quotes/create-quote">
+    Click **New Quote** from the customer detail panel.
+  </Card>
+  <Card title="Generate portal link" icon="link" href="/portal/generate-link">
+    Send the customer a portal URL so they can see future jobs and invoices.
+  </Card>
+  <Card title="Add health score baseline" icon="heart-pulse" href="/customers/health-score">
+    The score initializes at 50 (neutral) and refines as you do business together.
+  </Card>
+</Columns>
+
+<Tip>
+  You can also add customers in bulk via **Settings → Import**. The CSV template includes every field on the form.
+</Tip>

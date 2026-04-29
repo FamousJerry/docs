@@ -1,0 +1,119 @@
+---
+title: "AI Job Report"
+description: "Auto-generated end-of-job summary covering equipment, issues, customer notes, and recommendations."
+icon: "file-lines"
+---
+
+The AI Job Report is generated automatically at the end of every closed job. It captures everything that happened in a single, readable document — and it's also exposed to the customer in a friendlier version through their portal.
+
+## When the report generates
+
+The report is generated:
+
+- **At inspection complete** — the moment you click **Complete Inspection** at the end of Return & Inspect
+- **From the closed job's Overview tab** — click **Regenerate Report** any time after, especially if you've added documents or notes since the original generation
+
+The first generation runs in the background after inspection and is ready in under 30 seconds. You can keep working on other things while it generates.
+
+## What's in the report
+
+The report has four sections:
+
+### 1. Equipment summary
+
+A line-by-line list of what went out and how it came back, including:
+
+- Asset ID, item name, kit it belonged to (if any)
+- Out date and Return date
+- Final condition (Good / Damaged / Missing)
+- Any condition notes you wrote at inspection
+
+For kits, components are itemized. The kit overall shows whether all components returned cleanly.
+
+### 2. Issues & damage
+
+Any item marked Damaged or Missing during inspection:
+
+- Item name and asset ID
+- Condition assigned
+- The notes you wrote
+- Photos you attached (rendered inline in the report)
+- Estimated repair / replacement cost (if you filled it in)
+- Whether the cost was deducted from the deposit, charged separately, or absorbed
+
+If there were no damage events, this section reads **No issues recorded — clean return.**
+
+### 3. Customer notes & timeline
+
+A digest of what happened during the job:
+
+- Notes added by your team during On Site
+- Any communications logged
+- Any extensions or schedule changes
+- Photos from delivery, on-site, or pickup
+
+The timeline format makes it easy for someone reading the report later to reconstruct the job.
+
+### 4. Recommendations
+
+Claude AI suggests follow-up actions based on what happened:
+
+- Inventory recommendations ("Camera Kit A's UV filter has been damaged on 3 of the last 5 jobs — consider switching to higher-grade filters.")
+- Customer relationship suggestions ("Customer requested an extension twice in the last 6 months — they may be a candidate for a long-term contract.")
+- Operational follow-ups ("Outstanding deposit deduction of ฿1,200 needs to be reconciled in accounting.")
+
+These are AI-generated suggestions. They are useful starting points, not commands.
+
+## Accessing the report
+
+| Where | What you see |
+| --- | --- |
+| Job's **Overview** tab | Inline render of the report with sections collapsible |
+| Job's **Documents** tab | The report as a downloadable PDF |
+| **Reports → Job History** | List of all closed jobs with each report linked |
+| Customer's portal | Customer-facing version (no internal cost figures, no recommendations) |
+
+## Customer-facing version
+
+The version visible in the customer portal is intentionally narrower:
+
+- Equipment list with friendly names (no Asset IDs)
+- Issues — only items they were told about and that affected their deposit (full transparency)
+- A thank-you message
+- A direct link to leave feedback
+
+Internal cost estimates, recommendations, and any internal notes are NOT shown to the customer. This separation is enforced — there is no toggle or setting that exposes the internal sections to the portal.
+
+## Regenerating
+
+To regenerate the report (after you've added photos, notes, or documents to the job):
+
+<Steps>
+  <Step title="Open the job">
+    Closed jobs are read-mostly but you can still annotate.
+  </Step>
+  <Step title="Click 'Regenerate Report'">
+    On the AI Report section of the Overview tab.
+  </Step>
+  <Step title="Wait 10–30 seconds">
+    The new report replaces the old one.
+  </Step>
+</Steps>
+
+The previous version is preserved in the audit trail — you can compare versions if needed.
+
+## What the AI is good at
+
+- Summarizing factual data into readable English / Thai prose
+- Spotting patterns across closed jobs (e.g., a recurring damage type)
+- Generating customer-friendly language from internal notes
+
+## What to verify yourself
+
+- **Cost figures.** The AI uses the costs you typed at inspection. If the costs are wrong, the report is wrong.
+- **Customer-facing language.** Read the customer-facing version before you assume the customer will understand it.
+- **Recommendations.** They're suggestions, not analyses backed by deep statistics. Use judgment.
+
+## Plan availability
+
+The full AI Job Report is on the **Operations** plan and above. On Pro and Starter plans, jobs still close cleanly with a non-AI summary that lists equipment, durations, and damage flags but doesn't generate the natural-language summary or recommendations.

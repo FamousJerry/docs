@@ -1,0 +1,102 @@
+---
+title: "Adding an Inventory Item"
+description: "Create a new piece of equipment in inventory with all fields explained."
+icon: "plus"
+---
+
+Every physical unit of equipment is one item in inventory. Even if you own 5 identical cameras, you create 5 inventory items — each with its own asset ID and barcode.
+
+## Adding a new item
+
+<Steps>
+  <Step title="Open the Inventory module">
+    From the sidebar.
+  </Step>
+  <Step title="Click 'New Item'">
+    Top right of the inventory list.
+  </Step>
+  <Step title="Fill the required fields">
+    See the field reference below.
+  </Step>
+  <Step title="Save">
+    Asset ID and barcode are auto-generated. The item appears in the list immediately.
+  </Step>
+  <Step title="Print a label">
+    Click **Print Label** on the item detail to send it to your Zebra printer.
+  </Step>
+</Steps>
+
+## Required fields
+
+| Field | Notes |
+| --- | --- |
+| **Item Name** | Display name. Will appear on quotes, invoices, the portal. |
+| **Category** | Pick from your defined categories (Camera, Lighting, etc.) |
+| **Rate** | Rental rate per duration unit |
+| **Rate Type** | Daily, Weekly, or Monthly |
+| **Condition** | Good, Fair, or Damaged (most new items are Good) |
+
+## Optional fields
+
+| Field | Why it matters |
+| --- | --- |
+| **Item Name (Thai)** | Thai display name for Thai customers |
+| **Serial Number** | Manufacturer's serial — useful for warranty claims |
+| **Manufacturer** | Brand (Sony, Aputure, etc.) |
+| **Model** | Model number/name |
+| **Purchase Date** | When you bought it |
+| **Purchase Price** | What you paid (used in damage replacement calculations) |
+| **Ownership** | Owned, Sub-rented, On consignment |
+| **Storage Location** | Shelf or cage location for picking |
+| **Notes** | Anything specific — known quirks, bundled accessories |
+| **Photo** | Reference photo of the unit |
+
+## Asset ID auto-generation
+
+The Asset ID is generated automatically from a category prefix + a sequence number:
+
+| Category | Prefix |
+| --- | --- |
+| Camera | `CAM-` |
+| Lens | `LEN-` |
+| Audio | `AUD-` |
+| Lighting | `LIT-` |
+| Grip | `GRP-` |
+| Power | `PWR-` |
+
+So the first camera you add becomes `CAM-001`, the second `CAM-002`, and so on. The prefix is set per category in **Settings → Categories**.
+
+## Barcode generation
+
+The barcode encodes the Asset ID. JingjaiOps uses **Code 128** format, which is what most warehouse barcode scanners read out of the box.
+
+The barcode is generated automatically — you don't pick the value. When you print a label, both the human-readable Asset ID and the scannable barcode appear on it.
+
+## Multiple units of the same item
+
+For 5 identical Sony FX6 cameras:
+
+1. Create 5 separate inventory items, each named "Sony FX6".
+2. Each gets its own asset ID: `CAM-001` through `CAM-005`.
+3. Each gets its own barcode label.
+
+When a quote calls for "1× Sony FX6", JingjaiOps reserves any one of the available units. At Pick & Scan time, the crew scans whichever physical unit they pull off the shelf — the system locks that specific Asset ID to that job.
+
+This is why you create multiple items rather than setting "Quantity: 5" on a single item — each physical unit needs to be tracked individually for asset history, damage, maintenance, and availability.
+
+## After adding
+
+Common next steps:
+
+<Columns cols={2}>
+  <Card title="Print a label" icon="barcode" href="/inventory/barcode-labels">
+    Send the asset ID and barcode to a Zebra printer.
+  </Card>
+  <Card title="Add to a kit" icon="boxes-packing" href="/inventory/kits">
+    Bundle the new item into a kit if appropriate.
+  </Card>
+</Columns>
+
+<Tip>
+  If you're adding many items at once (e.g., a fresh shipment of 20 batteries), use [CSV Import](/inventory/import) instead. The single-item form is best for one-offs.
+</Tip>

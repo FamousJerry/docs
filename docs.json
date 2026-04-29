@@ -1,72 +1,171 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "JingjaiOps",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#F5C518",
+    "light": "#F5C518",
+    "dark": "#B3E517"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "User Guide",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "getting-started/login",
+              "getting-started/navigation",
+              "getting-started/language"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Customers",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "customers/overview",
+              "customers/add-customer",
+              "customers/health-score",
+              "customers/portal-link"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Quotes",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/components",
-              "essentials/reusable-snippets"
+              "quotes/overview",
+              "quotes/create-quote",
+              "quotes/line-items",
+              "quotes/send-quote",
+              "quotes/digital-signature",
+              "quotes/deposits"
             ]
           },
           {
-            "group": "Agent ready",
+            "group": "Jobs & Equipment",
             "pages": [
-              "agent-ready/prompt",
-              "agent-ready/visibility",
-              "agent-ready/contextual",
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "jobs/overview",
+              "jobs/job-stages",
+              "jobs/pick-and-scan",
+              "jobs/load-out",
+              "jobs/on-site",
+              "jobs/return-inspect",
+              "jobs/ai-report"
+            ]
+          },
+          {
+            "group": "Invoices & Payments",
+            "pages": [
+              "invoices/overview",
+              "invoices/record-payment",
+              "invoices/prepayment",
+              "invoices/tax-invoice",
+              "invoices/recurring",
+              "invoices/receipts"
+            ]
+          },
+          {
+            "group": "Inventory",
+            "pages": [
+              "inventory/overview",
+              "inventory/add-item",
+              "inventory/kits",
+              "inventory/barcode-labels",
+              "inventory/categories",
+              "inventory/import"
+            ]
+          },
+          {
+            "group": "Deposits",
+            "pages": [
+              "deposits/overview",
+              "deposits/collect",
+              "deposits/return"
+            ]
+          },
+          {
+            "group": "Client Portal",
+            "pages": [
+              "portal/overview",
+              "portal/generate-link",
+              "portal/what-clients-see"
+            ]
+          },
+          {
+            "group": "AI Features",
+            "pages": [
+              "ai/overview",
+              "ai/quote-builder",
+              "ai/job-report",
+              "ai/natural-language-reports"
+            ]
+          },
+          {
+            "group": "Settings & Admin",
+            "pages": [
+              "settings/overview",
+              "settings/business-settings",
+              "settings/users-roles",
+              "settings/notifications",
+              "settings/categories"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "คู่มือภาษาไทย",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "เริ่มต้นใช้งาน",
             "pages": [
-              "api-reference/introduction"
+              "th/index",
+              "th/getting-started/login",
+              "th/getting-started/navigation"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "ลูกค้า",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "th/customers/overview",
+              "th/customers/add-customer"
+            ]
+          },
+          {
+            "group": "ใบเสนอราคา",
+            "pages": [
+              "th/quotes/overview",
+              "th/quotes/create-quote",
+              "th/quotes/send-quote"
+            ]
+          },
+          {
+            "group": "งานและอุปกรณ์",
+            "pages": [
+              "th/jobs/overview",
+              "th/jobs/job-stages",
+              "th/jobs/pick-and-scan"
+            ]
+          },
+          {
+            "group": "ใบแจ้งหนี้และการชำระเงิน",
+            "pages": [
+              "th/invoices/overview",
+              "th/invoices/record-payment",
+              "th/invoices/tax-invoice"
+            ]
+          },
+          {
+            "group": "คลังอุปกรณ์",
+            "pages": [
+              "th/inventory/overview",
+              "th/inventory/add-item"
+            ]
+          },
+          {
+            "group": "พอร์ทัลลูกค้า",
+            "pages": [
+              "th/portal/overview"
             ]
           }
         ]
@@ -75,14 +174,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "JingjaiOps Website",
+          "href": "https://jingjaiops.com",
+          "icon": "arrow-up-right-from-square"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Support",
+          "href": "mailto:support@jingjaipost.com",
+          "icon": "envelope"
         }
       ]
     }
@@ -95,32 +194,18 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@jingjaipost.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Open App",
+      "href": "https://jingjaiops.com"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/jingjaiops"
     }
   }
 }

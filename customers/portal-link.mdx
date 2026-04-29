@@ -1,0 +1,90 @@
+---
+title: "Customer Portal Links"
+description: "Generate no-password portal URLs for customers to view their jobs, invoices, and deposits."
+icon: "link"
+---
+
+Every customer can view their account through the **Client Portal** — a mobile-friendly web page that shows their jobs, invoices, receipts, and deposits. They never create a password. You give them a link.
+
+## What the portal is
+
+The portal is a customer-facing view of the data already in JingjaiOps. From a single URL, a client can:
+
+- See their active and past jobs with live stage updates
+- View and download every invoice and receipt
+- Pay outstanding invoices via PromptPay QR
+- Accept and digitally sign a quote
+- See deposits held and returned
+- Download all their PDFs in one place
+
+There is **no password and no app to install**. The link itself is the credential.
+
+## Generating a link
+
+You can generate a portal link from three places:
+
+<Columns cols={2}>
+  <Card title="From a customer">
+    Customer detail panel → **Generate Portal Link**. Gives the client access to everything tied to that customer.
+  </Card>
+  <Card title="From a quote">
+    Quote detail → **Send to Client**. The email contains a link scoped to that one quote (so the client can sign without seeing other records).
+  </Card>
+  <Card title="From an invoice">
+    Invoice detail → **Send to Client**. Email contains a link to pay that invoice.
+  </Card>
+</Columns>
+
+When you click any of these, JingjaiOps:
+
+1. Creates a new portal token (or reuses a valid one).
+2. Builds a URL like `https://portal.jingjaiops.com/c/abc123...`.
+3. Copies the URL to your clipboard, ready to paste anywhere.
+
+## Sending the link
+
+The most common channels:
+
+- **Email** — Use the built-in **Send to Client** action, or paste the link into your own email.
+- **LINE** — Paste into a LINE chat. Thai customers usually prefer this.
+- **SMS** — Works fine, links are short enough.
+
+The link's email body uses the customer's preferred language (EN or TH).
+
+## Link expiry
+
+| Link type | Expires after |
+| --- | --- |
+| Customer-wide link | 30 days |
+| Single-quote link | When the quote is accepted, declined, or expires |
+| Single-invoice link | When the invoice is fully paid, or 30 days |
+
+After expiry, the customer sees a friendly message telling them to ask you for a new link. Just generate one again — the URL changes but their portal data is the same.
+
+## Quote acceptance flow
+
+When a client opens a quote portal link, they see the quote PDF and an **Accept & Sign** button. The full flow:
+
+<Steps>
+  <Step title="Open the link">
+    The client lands on a page showing the quote totals, line items, and PDF preview.
+  </Step>
+  <Step title="Review and accept">
+    They click **Accept & Sign**. A signature pad appears (mouse, finger, or stylus).
+  </Step>
+  <Step title="Sign">
+    They draw their signature. Their name and timestamp are captured automatically.
+  </Step>
+  <Step title="Pay deposit (if required)">
+    If the quote includes a security deposit, they see a PromptPay QR for the deposit amount.
+  </Step>
+  <Step title="Confirmation">
+    They see a confirmation screen with the signed PDF available to download.
+  </Step>
+</Steps>
+
+In JingjaiOps, the quote moves to **Accepted** status, the signed PDF is attached, and you can convert it to a job with one click.
+
+<Tip>
+  Read [What clients see](/portal/what-clients-see) for a tour of every portal screen.
+</Tip>

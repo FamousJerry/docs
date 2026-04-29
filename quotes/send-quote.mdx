@@ -1,0 +1,100 @@
+---
+title: "Sending a Quote"
+description: "Email a quote to a customer, what they receive, and how to follow up."
+icon: "paper-plane"
+---
+
+Once a quote is built, send it to the customer via the built-in email or by sharing a portal link directly.
+
+## Sending via email
+
+<Steps>
+  <Step title="Click 'Send to Client'">
+    From the quote detail screen, click **Send to Client** at the top right.
+  </Step>
+  <Step title="Review the email">
+    A pre-filled email composer opens. The subject and body are in the customer's preferred language.
+  </Step>
+  <Step title="Edit if needed">
+    You can change the subject, body, or add a CC. The portal link is auto-included.
+  </Step>
+  <Step title="Send">
+    Click **Send**. The quote moves from **Draft** to **Sent** and the customer receives the email.
+  </Step>
+</Steps>
+
+The default email template:
+
+> **Subject**: Quote {QT-YYYY-NNNN} from {Your Company}
+>
+> Dear {Customer Contact},
+>
+> Please find your quote attached. You can review and accept it through the secure link below:
+>
+> {Portal Link}
+>
+> The quote is valid until {Expiry Date}. Please let us know if you have any questions.
+>
+> Best regards,
+> {Your Name}
+
+You can change the default template in **Settings → Business Settings → Email Templates**.
+
+## What the client receives
+
+The email includes:
+
+- The PDF of the quote (bilingual, EN/TH side by side)
+- A portal link button labeled **View & Accept Quote**
+- Your company's contact info in the signature
+
+When they click the portal link, they land on the quote view in the client portal. From there they can:
+
+1. Read the quote
+2. Download the PDF
+3. Accept and digitally sign
+4. Pay the deposit (if required)
+
+If they reply to the email, the reply goes to your company email inbox — not into JingjaiOps.
+
+## Portal link in the email
+
+The portal link is unique to this quote. It works without a password — anyone with the link can view, accept, and sign. Treat it like a payment link.
+
+Link format:
+
+```
+https://portal.jingjaiops.com/q/{token}
+```
+
+The link expires when the quote is accepted, declined, or hits its expiry date.
+
+## Following up
+
+To check whether the customer has opened the quote:
+
+1. Open the quote in JingjaiOps.
+2. Look at the **Activity** sidebar.
+
+You'll see entries like:
+
+- `Sent to client@example.com — 14 Mar 2026 10:32`
+- `Opened by client — 14 Mar 2026 10:48`
+- `Portal viewed — 14 Mar 2026 10:48`
+- `Accepted by Somchai Charoen — 14 Mar 2026 11:12`
+
+If the customer hasn't opened the quote in a couple of days, follow up. The **Send Reminder** action sends a friendly chase email with the same portal link.
+
+## Quote expiry
+
+Every quote has an expiry date (defaults to 14 days from creation). After expiry:
+
+- The quote moves to **Expired** status.
+- The portal link still loads, but the customer sees a message saying the quote has expired.
+- They can no longer accept it.
+
+To revive an expired quote, open it and click **Extend Expiry**. Pick a new date and the customer can accept again. Or duplicate the quote to issue a fresh one with a new number.
+
+<Tip>
+  If you set the expiry too short and the customer wants to accept after it expires, just extend it — there is no downside, and the original quote number is preserved.
+</Tip>

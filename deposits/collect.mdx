@@ -1,0 +1,123 @@
+---
+title: "Collecting a Deposit"
+description: "Recording deposit receipt — payment methods, DEPR receipt generation, and audit tracking."
+icon: "hand-holding-dollar"
+---
+
+Once a customer has paid the security deposit (via PromptPay, transfer, or in person), you record the collection in JingjaiOps. This generates a deposit receipt and moves the deposit's status from **Pending** to **Held**.
+
+## Recording deposit collection
+
+<Steps>
+  <Step title="Open the deposit">
+    From the Deposits list. The deposit should be in **Pending** status (created automatically when the quote was accepted).
+  </Step>
+  <Step title="Click 'Collect Payment'">
+    A side panel opens with the deposit amount pre-filled.
+  </Step>
+  <Step title="Enter the actual amount received">
+    Usually the full amount. If the customer paid only part, enter the partial amount and the deposit stays Partially Held.
+  </Step>
+  <Step title="Pick the payment method">
+    Bank Transfer, Cash, PromptPay, Credit Card, Cheque, or Other.
+  </Step>
+  <Step title="Add the reference">
+    Bank slip number, transaction ID, or receipt number.
+  </Step>
+  <Step title="Set the collection date">
+    Defaults to today. Edit if money came in earlier.
+  </Step>
+  <Step title="Attach proof (optional)">
+    Upload a screenshot of the bank slip or PromptPay confirmation.
+  </Step>
+  <Step title="Save">
+    The deposit moves to **Held** status and a deposit receipt is generated.
+  </Step>
+</Steps>
+
+## Payment methods
+
+Deposit collection supports the same methods as invoice payments:
+
+| Method | When to use |
+| --- | --- |
+| Bank Transfer | Customer transferred via online banking |
+| Cash | Paid in person |
+| PromptPay | Customer scanned the deposit QR in the portal |
+| Credit Card | If you accept cards via your own merchant |
+| Cheque | Cheque number goes in the reference field |
+| Other | Anything else |
+
+## DEPR receipt generation
+
+When you save the collection, a **Deposit Receipt** is generated automatically with number `DEPR-YYYY-NNNN`:
+
+- `DEPR` — deposit receipt prefix (configurable)
+- `YYYY` — year
+- `NNNN` — sequence per year
+
+The DEPR number is separate from regular receipts (`RC-`) and pre-payment receipts (`PREREC-`). This separation makes accounting reconciliation straightforward — your books distinguish deposit collections from rental revenue.
+
+The DEPR PDF includes:
+
+- Deposit receipt number and date
+- Reference to the deposit number (`DEP-YYYY-NNNN`) and the quote/job
+- Customer details
+- Amount received
+- **"Refundable Security Deposit — Not Subject to VAT"** stated clearly
+- Payment method and reference
+- Your business signature line
+
+## Who collected and when
+
+Every deposit collection logs:
+
+- **Collected by**: the staff user who recorded the collection
+- **Collected at**: the timestamp
+- **Method**: how the deposit was received
+- **Reference**: the bank slip / transaction ID
+
+This audit trail is on the deposit detail screen and on the DEPR receipt itself. It's important for two reasons:
+
+1. **Accountability** — you know who took the deposit and when, in case of dispute.
+2. **Reconciliation** — when you check your bank statement, the reference matches the DEPR.
+
+## Sending the DEPR to the customer
+
+The customer's portal automatically shows the DEPR receipt the moment it's issued. You don't have to send it separately, but you can:
+
+<Steps>
+  <Step title="Open the deposit">
+    Click the DEPR receipt in the Documents tab.
+  </Step>
+  <Step title="Click 'Send to Client'">
+    Email composer opens with the receipt attached.
+  </Step>
+  <Step title="Send">
+    Customer receives the DEPR PDF.
+  </Step>
+</Steps>
+
+For Thai customers, the DEPR is bilingual with Thai labels first.
+
+## Editing or voiding a collection
+
+If you record a deposit collection by mistake (wrong amount, wrong method):
+
+<Steps>
+  <Step title="Open the DEPR receipt">
+    From the deposit's Documents tab.
+  </Step>
+  <Step title="Click 'Void'">
+    Provide a reason (required).
+  </Step>
+  <Step title="Confirm">
+    The DEPR is voided, the deposit returns to **Pending**, and you can re-record the collection correctly.
+  </Step>
+</Steps>
+
+Voided DEPR receipts stay in the system for audit purposes — they don't disappear. They show with a "VOID" stamp and the reason.
+
+<Tip>
+  When the customer pays both the rental balance and the deposit in a single transfer, record the deposit and the regular payment separately. JingjaiOps splits the money correctly across DEPR (deposit) and RC (revenue) — each gets its own receipt with its own reference but the same bank slip number is fine.
+</Tip>

@@ -1,0 +1,100 @@
+---
+title: "Client Portal Overview"
+description: "What the customer-facing portal is, who can access it, and what customers can do."
+icon: "globe"
+---
+
+The Client Portal is JingjaiOps' customer-facing website. Every customer can see their jobs, invoices, receipts, and deposits through a single mobile-friendly URL — no password, no app install.
+
+## What the portal is
+
+The portal is a read-and-act window into the data your team manages in JingjaiOps. From a single URL, the customer can:
+
+- See their active and past jobs with live stage updates
+- Download every invoice, receipt, deposit document, and signed quote
+- Pay outstanding invoices via PromptPay QR
+- Accept and digitally sign new quotes
+- See deposits held and returned
+- View an at-a-glance summary of their account
+
+The portal updates in real time. If your warehouse marks a job **Loaded**, the customer sees it the same second.
+
+## Who can access it
+
+Anyone with the portal link. Each customer (or quote, or invoice) has its own unique link. The link is the credential — no username or password needed.
+
+Links are scoped:
+
+- **Customer-wide link** — sees all jobs, invoices, deposits, and quotes for that customer
+- **Single-quote link** — only the one quote (used for sending a quote for signature)
+- **Single-invoice link** — only the one invoice (used for sending a payment request)
+
+Read [Generate Portal Links](/portal/generate-link) for details.
+
+## No password required
+
+JingjaiOps doesn't require customers to create an account. We made this design choice because:
+
+- **Lower friction** — most customers are too busy to register, set a password, and remember it
+- **Faster onboarding** — they click the link in your email and they're in
+- **Mobile first** — no app store, no install, just a URL
+
+The trade-off is that the link itself is sensitive. If forwarded, anyone with the link can view the customer's data. We mitigate this with:
+
+- **Link expiry** (30 days for customer-wide, until close for single-quote or single-invoice)
+- **Token revocation** (you can revoke any link at any time)
+- **No payment execution from the portal** (PromptPay payments require the customer to scan and pay; the portal cannot move money on its own)
+
+For sensitive accounts (very high-value customers or contracts), we can enable optional access codes — read [Generate Portal Links](/portal/generate-link) for details.
+
+## Mobile optimized
+
+The portal is built mobile-first. Designed for use on a phone in line at a coffee shop or at a job site. Works on:
+
+- iOS Safari, Chrome
+- Android Chrome, Samsung Internet
+- Any modern mobile or tablet browser
+
+The desktop experience is also fine, but most customers open it on their phones.
+
+## What customers can do
+
+| Action | Available |
+| --- | --- |
+| View a quote | ✅ |
+| Accept and sign a quote | ✅ |
+| Download a quote PDF | ✅ |
+| Pay a deposit (via PromptPay) | ✅ |
+| View a job and its current stage | ✅ |
+| View an invoice | ✅ |
+| Pay an invoice (via PromptPay) | ✅ |
+| Download every document | ✅ |
+| Toggle EN / TH | ✅ |
+| Reply to your team via email | ✅ (link to your support email) |
+
+What customers can **not** do:
+
+| Action | Why |
+| --- | --- |
+| Edit any data | The portal is view-and-act, not edit |
+| Cancel a job | Cancellations go through your team |
+| Change quote details | Once accepted, quotes are fixed |
+| Add line items | Manual change requests via email |
+| Modify their profile | Contact you to update |
+
+This intentional design keeps the portal simple and predictable for the customer while keeping you in control of the data.
+
+## Languages
+
+The portal supports English and Thai. The first time a customer visits, the language matches the **Preferred Language** field on their customer record. They can toggle EN/TH using the language switcher in the top right at any time, and their choice persists per device.
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Generate a portal link" icon="link" href="/portal/generate-link">
+    From customer, quote, or invoice — how to create a portal URL.
+  </Card>
+  <Card title="What clients see" icon="eye" href="/portal/what-clients-see">
+    Tour of every portal screen, tab, and feature.
+  </Card>
+</Columns>

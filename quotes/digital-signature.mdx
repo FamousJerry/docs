@@ -1,0 +1,80 @@
+---
+title: "Digital Signature"
+description: "How customers digitally sign quotes through the portal and the legal status under Thai law."
+icon: "signature"
+---
+
+JingjaiOps captures a legally valid digital signature on every accepted quote. The signed PDF replaces a paper contract — no printing, no scanning, no physical mail.
+
+## How it works
+
+When a customer accepts a quote through the portal, JingjaiOps:
+
+1. Shows a signature pad (mouse, finger, or stylus).
+2. Captures the signature image, the signer's name, and a timestamp.
+3. Embeds all three into the PDF along with audit metadata.
+4. Generates the signed PDF and attaches it to the quote.
+
+The customer gets an immediate copy. You can download the signed PDF from the quote at any time.
+
+## Client signing flow
+
+<Steps>
+  <Step title="Customer opens the portal link">
+    They land on the quote view with a clear call-to-action: **Accept & Sign**.
+  </Step>
+  <Step title="They review the quote">
+    The full quote PDF is rendered in the browser. They can scroll, zoom, or download.
+  </Step>
+  <Step title="They click 'Accept & Sign'">
+    A signature pad slides up from the bottom.
+  </Step>
+  <Step title="They draw their signature">
+    On a phone: finger or stylus. On a laptop: mouse or trackpad. They can clear and redraw if needed.
+  </Step>
+  <Step title="They confirm their name">
+    A name field is prefilled with the primary contact name. They can edit it.
+  </Step>
+  <Step title="They submit">
+    Clicking **Confirm Signature** finalizes the acceptance. They cannot undo.
+  </Step>
+</Steps>
+
+## Signed PDF generation
+
+When the signature is confirmed, JingjaiOps generates a new version of the quote PDF that includes:
+
+- The signature image embedded at the bottom of the document
+- The signer's typed name beneath the image
+- A timestamp in both formats: ISO-8601 (`2026-03-14T11:12:42Z`) and a human-readable string (`14 March 2026, 11:12 ICT`)
+- An audit footer showing the IP address, user agent, and quote token
+
+The signed PDF replaces the unsigned one as the canonical document for the quote.
+
+## Audit trail
+
+Every signature event is logged in the quote's **Activity** panel:
+
+- Signer name (as typed at signing time)
+- Timestamp
+- IP address
+- User agent (browser and device)
+- Portal token used
+
+This audit trail is preserved indefinitely and cannot be deleted.
+
+## Legal validity
+
+Digital signatures captured through JingjaiOps are valid under the **Thailand Electronic Transactions Act B.E. 2544 (2001)** and its 2019 amendment. The Act gives an electronic signature the same legal effect as a handwritten one when the method:
+
+1. Identifies the signer
+2. Indicates the signer's intention to be bound by the content
+3. Is appropriate to the purpose for which the document was created
+
+JingjaiOps satisfies all three by capturing the signature image, the typed name, the IP address, the user agent, and a tamper-evident timestamp embedded into the PDF.
+
+For most rental agreements this is sufficient. If you are dealing with a contract value or counterparty where you want a higher-assurance signature (such as a digital certificate-based signature under the Thai Electronic Transactions Act for "Reliable" signatures), use a separate eSign provider for that single document — JingjaiOps does not currently issue certificate-based signatures.
+
+<Tip>
+  For everyday rental quotes, JingjaiOps signatures are accepted by every Thai rental customer we've worked with. We recommend keeping the signed PDFs in cloud storage (the portal already does this) and being able to produce the audit log if requested.
+</Tip>

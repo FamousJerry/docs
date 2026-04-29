@@ -1,0 +1,78 @@
+---
+title: "AI Features Overview"
+description: "How JingjaiOps uses Claude AI for quotes, job reports, and natural language analytics."
+icon: "sparkles"
+---
+
+JingjaiOps embeds Claude AI throughout the workflow — turning plain-English descriptions into structured quotes, summarizing closed jobs, and answering questions about your data without you writing a single SQL query.
+
+## Powered by Claude AI
+
+All AI features in JingjaiOps run on **Anthropic's Claude AI**. We chose Claude because:
+
+- **Strong Thai-language understanding** for bilingual workflows
+- **Reasoned, structured output** that fits cleanly into business systems
+- **Privacy-conscious** — your data is processed only for your own queries and is not used to train models
+- **Reliable** — the API has predictable behavior we can build a product on
+
+Every AI interaction is scoped to your business's data only. JingjaiOps does not share your inventory, customer data, or pricing across tenants.
+
+## Available features
+
+<Columns cols={2}>
+  <Card title="AI Quote Builder" icon="wand-magic-sparkles" href="/ai/quote-builder">
+    Describe a job in plain language; AI suggests the line items.
+  </Card>
+  <Card title="AI Job Report" icon="file-lines" href="/ai/job-report">
+    Auto-generated summary of every closed job.
+  </Card>
+  <Card title="Ask Your Data" icon="comment-dots" href="/ai/natural-language-reports">
+    Type a question; get a chart, a table, or a number.
+  </Card>
+</Columns>
+
+## Plan availability
+
+AI features are part of the **Operations** plan and above:
+
+| Plan | AI Features |
+| --- | --- |
+| **Starter** | Not included |
+| **Pro** | Not included |
+| **Operations** | All AI features included |
+| **Enterprise** | All AI features + custom prompts and bring-your-own-key |
+
+If you're on a Pro or Starter plan and want to try AI features, contact support@jingjaipost.com — we can enable a 30-day trial on your account.
+
+## Response time
+
+Most AI calls return in 2–6 seconds. The exceptions:
+
+- **AI Quote Builder** — 4–10 seconds (it has to match your inventory)
+- **AI Job Report** — runs in the background after inspection completes, ready in under 30 seconds
+- **Ask Your Data** — 3–8 seconds depending on complexity
+
+The UI shows a clear progress state during AI calls. If a call fails (network error, rate limit), it retries once automatically and then shows a friendly error with a retry button.
+
+## Privacy and data handling
+
+Your data passes through the Claude API to generate AI responses. Important guarantees:
+
+- **No training on your data.** Anthropic does not train future models on customer API data.
+- **Per-tenant isolation.** Queries from one JingjaiOps account never see another account's data.
+- **Logged for audit.** Every AI call is logged in your account's audit trail (who asked, when, what was asked).
+- **Deletable.** AI conversation history is wiped when you delete a record (e.g., archive a customer).
+
+For high-sensitivity use cases (e.g., government tenders), the **Enterprise** plan supports bring-your-own-API-key, where the AI calls go through your own Anthropic account and never touch JingjaiOps' shared infrastructure.
+
+## Disabling AI features
+
+If you don't want AI features at all, disable them per user in **Settings → Users → Edit User → AI Permissions**. Disabling on a user means they don't see AI buttons in the UI and AI features are skipped for their actions.
+
+The features can also be disabled account-wide in **Settings → Business Settings → AI Features → Off**. The data the AI would have generated (job reports, quote suggestions) is left blank.
+
+## Cost
+
+AI features are included at no extra cost on the Operations plan within reasonable usage. "Reasonable" means typical business usage — building quotes, generating job reports, asking 20–30 data questions per week. If you use the API extraordinarily heavily (1000+ AI calls per day), we'll reach out to discuss either an Enterprise upgrade or BYOK.
+
+You can monitor your AI usage in **Settings → Usage**.

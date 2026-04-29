@@ -1,0 +1,96 @@
+---
+title: "Jobs Overview"
+description: "Jobs are how rental work happens — from picking equipment to returning it. Each job tracks every stage."
+icon: "truck"
+---
+
+A job is a single rental engagement. It starts when a quote is accepted and ends when equipment is returned, inspected, and the final invoice is issued.
+
+## How jobs are created
+
+Jobs aren't created from scratch — they always start from an accepted quote. Once a quote is accepted and signed:
+
+<Steps>
+  <Step title="Open the accepted quote">
+    From the Quotes list or directly from the customer detail panel.
+  </Step>
+  <Step title="Click 'Create Job'">
+    A confirmation panel appears showing dates, line items, and inventory reservations.
+  </Step>
+  <Step title="Confirm job dates">
+    Defaults to the quote's job start and end. Adjust if the actual dates have shifted.
+  </Step>
+  <Step title="Confirm">
+    The job is created in the **New** stage. The quote moves to **Job Created**.
+  </Step>
+</Steps>
+
+The job inherits everything from the quote — line items, kits, customer, dates, deposit. From this point, the job is the working record. Changes to the quote no longer affect the job.
+
+## Job number format
+
+Jobs are numbered automatically: `JOB-YYYY-NNNN`
+
+- `JOB` — the job prefix (configurable in **Settings → Business Settings**)
+- `YYYY` — the year the job was created
+- `NNNN` — sequential number per year, zero-padded
+
+Job numbers are independent of quote numbers. A quote `QT-2026-0042` might become job `JOB-2026-0058` if other jobs were created in between.
+
+## The job list view
+
+The Jobs module defaults to a **board view** with one column per stage. Drag handles do not move jobs (stage changes go through the proper actions in the job detail), but the board gives you an instant read on what's where.
+
+You can switch to a **list view** with these columns:
+
+| Column | What it shows |
+| --- | --- |
+| Job Number | `JOB-YYYY-NNNN` |
+| Customer | Customer name |
+| Stage | New / Picking / Loaded / Delivering / On Site / Returning / Closed |
+| Start | Job start date |
+| End | Job end date |
+| Damage | Count of damaged or missing items (if any) |
+| Crew Lead | Assigned operations lead |
+
+## Statuses (job stages)
+
+Jobs move through 7 stages:
+
+| Stage | What happens |
+| --- | --- |
+| **New** | Job exists but no equipment picked yet |
+| **Picking** | Crew is in the warehouse scanning items |
+| **Loaded** | Truck loaded, ready to depart |
+| **Delivering** | Equipment is in transit |
+| **On Site** | Equipment is at the customer location |
+| **Returning** | Equipment is coming back |
+| **Closed** | Returned, inspected, invoice issued |
+
+Read [Job Stages](/jobs/job-stages) for what each stage means and how to transition between them.
+
+## Real-time updates for all staff
+
+Every job stage change is broadcast in real time to:
+
+- Every staff member with the job open
+- The Jobs board view
+- The dashboard "Active Jobs" widget
+- The customer's portal (the customer sees a friendlier version)
+
+This means when the warehouse marks a job **Loaded**, the customer sees their job move to **Loaded** immediately, and your sales team's dashboard updates without a refresh.
+
+## Cancelling a job
+
+If a job needs to be cancelled (the customer pulled out, dates moved indefinitely):
+
+1. Open the job.
+2. Click the **•••** menu and choose **Cancel Job**.
+3. Choose whether to release the inventory reservation.
+4. Confirm.
+
+The job moves to **Cancelled**. Inventory is released if you ticked that option. The associated quote is unaffected — you can choose to revise and re-quote, or archive.
+
+<Tip>
+  Cancelling is reversible while no inventory has been picked. Once items have been scanned out, you have to scan them back in before cancelling.
+</Tip>

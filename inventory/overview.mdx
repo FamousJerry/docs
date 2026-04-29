@@ -1,0 +1,108 @@
+---
+title: "Inventory Overview"
+description: "Your equipment list — items, statuses, categories, rate types, and how availability works."
+icon: "boxes-stacked"
+---
+
+The Inventory module is your warehouse on screen. Every physical piece of equipment you own is one row in inventory, with its own asset ID, barcode, and rental rate.
+
+## The item list
+
+The default view shows every item with these columns:
+
+| Column | What it shows |
+| --- | --- |
+| Asset ID | Auto-generated unique ID, also the barcode value |
+| Item Name | Display name (with Thai translation if set) |
+| Category | Camera, Lighting, Audio, etc. |
+| Status | In Stock / Checked Out / Maintenance / Archived |
+| Current Job | If checked out, which job |
+| Rate | Rental rate per duration unit |
+| Condition | Good / Fair / Damaged (current) |
+| Serial Number | Manufacturer's serial number, if entered |
+
+You can filter by category, status, condition, or search by asset ID, name, or serial number.
+
+## Status types
+
+Each item has a current status:
+
+| Status | Meaning |
+| --- | --- |
+| **In Stock** | At the warehouse, available for booking |
+| **Checked Out** | On a job (Pick & Scan has scanned it out) |
+| **Maintenance** | Pulled from circulation for repair, cleaning, or service |
+| **Archived** | Retired item, kept for historical records, not bookable |
+
+Status updates happen automatically based on Pick & Scan activity. You can also change status manually for maintenance pulls.
+
+## Category filter
+
+Inventory is grouped into categories defined in **Settings → Categories**. The default categories are:
+
+- Camera
+- Lens
+- Audio
+- Lighting
+- Grip
+- Power
+- Cases & Bags
+- Accessories
+
+You can add, edit, and reorder categories — read [Categories](/inventory/categories).
+
+## Rate types
+
+Each item has a rental rate keyed to a duration unit:
+
+| Rate Type | When to use |
+| --- | --- |
+| **Daily** | Items typically rented by the day |
+| **Weekly** | Items typically rented by the week (most common) |
+| **Monthly** | Long-term rentals, large equipment |
+
+The rate is in your business currency (THB by default). When the item is added to a quote, the rate auto-fills. The total for that line is `quantity × duration × rate`.
+
+You can have items with different rate types in the same quote — JingjaiOps converts to a consistent display unit on the PDF.
+
+## Availability checking
+
+Availability is computed in real time across all bookings. When you add an item to a quote with overlapping dates:
+
+- If you own enough units, the item is added.
+- If a date conflict exists, JingjaiOps shows a warning with which dates are taken and suggests alternatives.
+- Hard conflicts block scan-out at Pick & Scan time, not at quote time, so you can still build a tentative quote with the warning visible.
+
+Availability respects:
+
+- Reserved (quoted, accepted, but not yet picked) units
+- Picked (currently on a job) units
+- Maintenance (out of circulation) units
+
+## Common actions
+
+| Action | Where |
+| --- | --- |
+| Add a new item | **+ New Item** at the top of the inventory list |
+| Bulk import from CSV | **Settings → Import** |
+| Print barcode labels | Item detail → **Print Label** |
+| Send to maintenance | Item detail → Status → **Maintenance** |
+| Archive an item | Item detail → **•••** → **Archive** |
+| Build a kit | **+ New Kit** from the Kits tab |
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Add an item" icon="plus" href="/inventory/add-item">
+    Step by step inventory addition.
+  </Card>
+  <Card title="Build kits" icon="boxes-packing" href="/inventory/kits">
+    Bundle items into rentable kits.
+  </Card>
+  <Card title="Print barcode labels" icon="barcode" href="/inventory/barcode-labels">
+    Use a Zebra ZD230T to print labels.
+  </Card>
+  <Card title="Import from CSV" icon="file-import" href="/inventory/import">
+    Migrate from a spreadsheet to JingjaiOps.
+  </Card>
+</Columns>

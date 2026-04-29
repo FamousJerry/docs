@@ -1,0 +1,183 @@
+---
+title: "Users & Roles"
+description: "Inviting users, setting roles, role permissions, deactivating, and 2FA."
+icon: "users"
+---
+
+Users & Roles is where you manage who has access to JingjaiOps. Each user has a role that controls what they can see and do.
+
+## Inviting a user
+
+<Steps>
+  <Step title="Open Settings → Users & Roles">
+    From the sidebar.
+  </Step>
+  <Step title="Click 'Invite User'">
+    A form opens.
+  </Step>
+  <Step title="Enter their email">
+    The invitation email goes here.
+  </Step>
+  <Step title="Pick a role">
+    From the dropdown — Crew, Sales, Billing, Operations, Admin, Super Admin.
+  </Step>
+  <Step title="Optionally set permissions">
+    Roles have defaults. You can override per module.
+  </Step>
+  <Step title="Send invitation">
+    They receive an email with an activation link valid for 7 days.
+  </Step>
+</Steps>
+
+## Roles
+
+JingjaiOps has six built-in roles:
+
+| Role | What they can do |
+| --- | --- |
+| **Crew** | Pick & Scan, Return & Inspect, view jobs and inventory. Read-only on customers, quotes, invoices |
+| **Sales** | Create and send quotes, manage customers. Read-only on jobs and invoices |
+| **Billing** | Issue invoices, record payments, manage receipts. Read-only on jobs and inventory |
+| **Operations** | Manage jobs end to end, plus all Crew permissions. Read-only on customers and quotes |
+| **Admin** | Everything except billing settings and role management |
+| **Super Admin** | Everything, including billing and role management |
+
+A typical small operation has 1 Super Admin (the owner), 1–2 Admins (operations leads), and a mix of Crew, Sales, and Billing roles.
+
+## Role permissions per module
+
+You can override the default per-module permission for any user. Each module supports:
+
+- **None** — module hidden in sidebar
+- **Read** — view only
+- **Write** — view, create, edit
+- **Manage** — all of the above plus delete and configuration
+
+Default permissions per role:
+
+| Role | Customers | Quotes | Jobs | Invoices | Inventory | Settings |
+| --- | --- | --- | --- | --- | --- | --- |
+| Crew | Read | Read | Write | None | Read | None |
+| Sales | Manage | Manage | Read | Read | Read | None |
+| Billing | Read | Read | Read | Manage | None | None |
+| Operations | Read | Read | Manage | Read | Manage | None |
+| Admin | Manage | Manage | Manage | Manage | Manage | Write |
+| Super Admin | Manage | Manage | Manage | Manage | Manage | Manage |
+
+To override, find the user in the list, click **Edit**, and adjust per-module permission.
+
+## Editing a user
+
+<Steps>
+  <Step title="Find the user">
+    In the Users list.
+  </Step>
+  <Step title="Click 'Edit'">
+    The user detail panel opens.
+  </Step>
+  <Step title="Change role or permissions">
+    Save when done.
+  </Step>
+</Steps>
+
+You can also edit:
+
+- Display name (what shows on activity logs and in the UI)
+- Avatar
+- Phone number
+- Permissions per module
+
+## Deactivating a user
+
+When a staff member leaves:
+
+<Steps>
+  <Step title="Open the user">
+    From the Users list.
+  </Step>
+  <Step title="Click 'Deactivate'">
+    Confirm.
+  </Step>
+</Steps>
+
+The deactivated user:
+
+- Cannot log in
+- Is hidden from default user lists
+- Their past activity is preserved with their name attached
+
+Deactivation is reversible — click **Reactivate** if they come back.
+
+You can also delete the user permanently, but their past activity becomes "Unknown User" and audit trails are harder to read. Deactivate unless there's a specific reason to delete (GDPR / PDPA request, for instance).
+
+## Two-factor authentication (2FA)
+
+2FA is supported on all plans. We strongly recommend enforcing it for every user.
+
+### Per-user 2FA
+
+Each user enables 2FA on their own profile:
+
+<Steps>
+  <Step title="Open the profile">
+    Click avatar → **Profile**.
+  </Step>
+  <Step title="Click 'Set up 2FA'">
+    A QR code appears.
+  </Step>
+  <Step title="Scan with an authenticator app">
+    Google Authenticator, Authy, or 1Password.
+  </Step>
+  <Step title="Enter the 6-digit code">
+    Confirms the setup.
+  </Step>
+  <Step title="Save recovery codes">
+    Print or download. Each is good for one use.
+  </Step>
+</Steps>
+
+### Enforcing 2FA business-wide
+
+In Settings → Users & Roles → **Require 2FA**:
+
+- **Off** — 2FA is optional per user
+- **Required for Admins** — Admins and Super Admins must enable 2FA
+- **Required for everyone** — every user must enable 2FA
+
+If you switch to "Required for everyone," users without 2FA enabled are forced through 2FA setup on their next login.
+
+### Resetting 2FA for a user
+
+If a user loses access to their authenticator and recovery codes:
+
+<Steps>
+  <Step title="Verify identity">
+    Talk to the user via phone or video — never reset 2FA based on an email request alone.
+  </Step>
+  <Step title="Open the user">
+    Settings → Users & Roles → click user.
+  </Step>
+  <Step title="Click 'Reset 2FA'">
+    The user's 2FA is removed. Their next login will work with just password.
+  </Step>
+  <Step title="Ask them to re-enable">
+    They should set up 2FA again on their next login.
+  </Step>
+</Steps>
+
+The reset action is logged in the audit trail with who reset whom.
+
+<Warning>
+  Resetting 2FA is a high-trust action. Only do it after verifying identity through a separate channel.
+</Warning>
+
+## Session management
+
+Open sessions for a user are visible in their detail panel:
+
+| Session | Device | IP | Started |
+| --- | --- | --- | --- |
+| Active | Chrome on macOS | 1.2.3.4 | 5 min ago |
+| Active | Safari on iPhone | 5.6.7.8 | 2 days ago |
+
+Click any session to revoke it. The user is signed out immediately on that device. They can sign in again with their password (and 2FA if enabled).
